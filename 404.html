@@ -162,7 +162,7 @@
         // Generate unique UID
         const uid = generateUID();
 
-         // Format start and end times
+        // Format start and end times
         const formattedStartTime = formatDateTime(startTime);
         const formattedEndTime = formatDateTime(endTime);
         const formattedNow = formatDateTime(new Date().toISOString());
@@ -214,10 +214,10 @@ END:VCALENDAR`;
         };
     };
 
-    // Function to handle showing the 404 page
+    // Function to handle 404 error
     const showNotFound = () => {
-        document.getElementById('not-found').style.display = 'block';
         document.getElementById('event-details').style.display = 'none';
+        document.getElementById('not-found').style.display = 'block';
     };
 
     // Function to update the DOM with event details
@@ -253,16 +253,17 @@ END:VCALENDAR`;
             const urls = generateCalendarUrls(event);
             const icsContent = generateICSFile(event);
 
+            // Create and download ICS file
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const icsBlobUrl = URL.createObjectURL(blob);
+            const icsLink = document.getElementById('ics-link');
+            icsLink.href = icsBlobUrl;
+            icsLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
+
             document.getElementById('yahoo-link').href = urls.yahoo;
             document.getElementById('google-link').href = urls.google;
             document.getElementById('outlook-link').href = urls.outlook;
             document.getElementById('office365-link').href = urls.office365;
-
-            // Create and download ICS file
-            const blob = new Blob([icsContent], { type: 'text/calendar' });
-            const icsBlobUrl = URL.createObjectURL(blob);
-            document.getElementById('ics-link').href = icsBlobUrl;
-            document.getElementById('apple-link').href = icsBlobUrl;
 
             // Show event details and hide 404 message
             document.getElementById('event-details').style.display = 'block';
