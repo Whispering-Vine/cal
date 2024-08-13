@@ -15,7 +15,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 100svh;
         }
         .container {
             background: #fff;
@@ -85,6 +85,7 @@
             text-decoration: none;
             color: #333;
             font-weight: bold;
+            cursor: pointer;
         }
         .calendar-button i {
             margin-right: 5px;
@@ -134,7 +135,7 @@
                 <h2>Add to Calendar</h2>
                 <div class="calendar-buttons">
                     <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
-                    <a href="#" class="calendar-button" id="apple-link"><i class="fab fa-apple"></i> Apple</a>
+                    <a href="#" class="calendar-button" id="apple-link" onclick="downloadICS(event)"><i class="fab fa-apple"></i> Apple</a>
                     <a href="#" class="calendar-button" id="outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
                     <a href="#" class="calendar-button" id="yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
                     <a href="#" class="calendar-button" id="office365-link"><i class="fab fa-microsoft"></i> Office365</a>
@@ -234,6 +235,31 @@ END:VCALENDAR`;
         document.getElementById('event-day-name').textContent = startDate.toLocaleString('default', { weekday: 'long' });
         document.getElementById('event-full-date').textContent = startDate.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
         document.getElementById('event-time').textContent = `${startDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - ${endDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+    };
+
+    // Function to handle Apple Calendar ICS download
+    const downloadICS = (event) => {
+        event.preventDefault(); // Prevent the default link action
+
+        const eventId = window.location.pathname.split('/').pop();
+        if (!eventId) return;
+
+        fetchEventData(eventId).then(event => {
+            if (!event) return;
+
+            const icsContent = generateICSFile(event);
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const icsBlobUrl = URL.createObjectURL(blob);
+
+            // Create a temporary link to trigger download
+            const tempLink = document.createElement('a');
+            tempLink.href = icsBlobUrl;
+            tempLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
+            tempLink.click();
+
+            // Clean up
+            URL.revokeObjectURL(icsBlobUrl);
+        });
     };
 
     (async () => {
