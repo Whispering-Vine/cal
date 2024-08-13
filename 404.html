@@ -265,17 +265,13 @@ END:VCALENDAR`;
             if (!event) return;
 
             const icsContent = generateICSFile(event);
-            const blob = new Blob([icsContent], { type: 'text/calendar' });
-            const icsBlobUrl = URL.createObjectURL(blob);
+            const dataUrl = `data:text/calendar;charset=utf-8,${encodeURIComponent(icsContent)}`;
 
             // Create a temporary link to trigger download
             const tempLink = document.createElement('a');
-            tempLink.href = icsBlobUrl;
+            tempLink.href = dataUrl;
             tempLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
             tempLink.click();
-
-            // Clean up
-            URL.revokeObjectURL(icsBlobUrl);
         });
     };
 
