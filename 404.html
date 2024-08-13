@@ -259,20 +259,23 @@ END:VCALENDAR`;
         event.preventDefault(); // Prevent the default link action
 
         const eventId = window.location.pathname.split('/').pop();
-        if (!event) return;
+        if (!eventId) return;
 
-             const icsContent = generateICSFile(event);
-             const blob = new Blob([icsContent], { type: 'text/calendar' });
-             const icsBlobUrl = URL.createObjectURL(blob);
+        fetchEventData(eventId).then(event => {
+            if (!event) return;
 
-             // Create a temporary link to trigger download
-             const tempLink = document.createElement('a');
-             tempLink.href = icsBlobUrl;
-             tempLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
-             tempLink.click();
+            const icsContent = generateICSFile(event);
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const icsBlobUrl = URL.createObjectURL(blob);
 
-             // Clean up
-             URL.revokeObjectURL(icsBlobUrl);
+            // Create a temporary link to trigger download
+            const tempLink = document.createElement('a');
+            tempLink.href = icsBlobUrl;
+            tempLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
+            tempLink.click();
+
+            // Clean up
+            URL.revokeObjectURL(icsBlobUrl);
         });
     };
 
