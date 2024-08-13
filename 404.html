@@ -152,7 +152,7 @@
                 <h2>Add to Calendar</h2>
                 <div class="calendar-buttons">
                     <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
-                    <a href="#" class="calendar-button" id="apple-link" onclick="downloadICS(event)" download="cal.ics"><i class="fab fa-apple"></i> Apple</a>
+                    <a href="#" class="calendar-button" id="apple-link" onclick="downloadICS(event)"><i class="fab fa-apple"></i> Apple</a>
                     <a href="#" class="calendar-button" id="outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
                     <a href="#" class="calendar-button" id="yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
                     <a href="#" class="calendar-button" id="office365-link"><i class="fab fa-microsoft"></i> Office365</a>
@@ -273,7 +273,7 @@ END:VCALENDAR`;
 
              // Clean up
              URL.revokeObjectURL(icsBlobUrl);
-         });
+        });
     };
 
     (async () => {
