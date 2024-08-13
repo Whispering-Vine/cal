@@ -149,47 +149,41 @@
                 Buy any Trefethen bottle from the tasting and the tasting fee will be refunded.
             </div>
             <div class="add-to-calendar">
-                <h2>Add to Calendar</h2>
-                <div class="calendar-buttons">
-                    <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
-                    <a href="#" class="calendar-button" id="apple-link" onclick="openInNewTab('apple')"><i class="fab fa-apple"></i> Apple</a>
-                    <a href="#" class="calendar-button" id="outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
-                    <a href="#" class="calendar-button" id="yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
-                    <a href="#" class="calendar-button" id="office365-link"><i class="fab fa-microsoft"></i> Office365</a>
-                    <a href="#" class="calendar-button" id="ics-link" onclick="openInNewTab('ics')"><i class="fas fa-calendar-alt"></i> ICS File</a>
+                 <h2>Add to Calendar</h2>
+                 <div class="calendar-buttons">
+                     <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
+                     <a href="#" class="calendar-button" id="apple-link" onclick="downloadICS(event)" download="cal.ics"><i class="fab fa-apple"></i> Apple</a>
+                     <a href="#" class="calendar-button" id="outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
+                     <a href="#" class="calendar-button" id="yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
+                     <a href="#" class="calendar-button" id="office365-link"><i class="fab fa-microsoft"></i> Office365</a>
+                    <a href="#" class="calendar-button" id="ics-link"><i class="fas fa-calendar-alt"></i> ICS File</a>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        // Function to generate unique UID for the event
-        const generateUID = () => {
-            return [...Array(32)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
-        };
-
-        // Function to format date and time in the required format
-        const formatDateTime = (dateTime) => {
-            const date = new Date(dateTime);
-            return date.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
-        };
-
-        // Function to generate ICS file content
-        const generateICSFile = (event) => {
-            const { title, description, location, startTime, endTime } = event;
-
-            // Generate unique UID
-            const uid = generateUID();
-
-            // Format start and end times
-            const formattedStartTime = formatDateTime(startTime);
-            const formattedEndTime = formatDateTime(endTime);
-            const formattedNow = formatDateTime(new Date().toISOString());
-
-            // Escape special characters and replace newlines for ICS format
-            const escapedDescription = description.replace(/[\n\r]+/g, '\\n').replace(/[,;]/g, '\\$&');
-            const escapedLocation = location.replace(/[,;]/g, '\\$&');
-
-            return `BEGIN:VCALENDAR
+    // Function to generate unique UID for the event
+    const generateUID = () => {
+        return [...Array(32)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+    };
+    // Function to format date and time in the required format
+    const formatDateTime = (dateTime) => {
+        const date = new Date(dateTime);
+        return date.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
+    };
+    // Function to generate ICS file content
+    const generateICSFile = (event) => {
+        const { title, description, location, startTime, endTime } = event;
+        // Generate unique UID
+        const uid = generateUID();
+        // Format start and end times
+        const formattedStartTime = formatDateTime(startTime);
+        const formattedEndTime = formatDateTime(endTime);
+        const formattedNow = formatDateTime(new Date().toISOString());
+        // Escape special characters and replace newlines for ICS format
+        const escapedDescription = description.replace(/[\n\r]+/g, '\\n').replace(/[,;]/g, '\\$&');
+        const escapedLocation = location.replace(/[,;]/g, '\\$&');
+        return `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:Whispering Vine
 BEGIN:VEVENT
@@ -202,91 +196,101 @@ LOCATION:${escapedLocation}
 SUMMARY:${title}
 END:VEVENT
 END:VCALENDAR`;
+    };
+    // Function to fetch event data from GitHub
+    const fetchEventData = async (eventId) => {
+        try {
+            const response = await fetch(`https://raw.githubusercontent.com/Whispering-Vine/cal/main/events/${eventId}.json`);
+            if (!response.ok) throw new Error('Event not found');
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching event data:', error);
+            return null;
+        }
+    };
+    // Function to generate calendar URLs
+    const generateCalendarUrls = (event) => {
+        const { title, description, location, startTime, endTime } = event;
+        const formattedTitle = encodeURIComponent(title);
+        const formattedDescription = encodeURIComponent(description);
+        const formattedLocation = encodeURIComponent(location);
+        return {
+            yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startTime}&ET=${endTime}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
+            google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startTime}/${endTime}&ctz=America/Los_Angeles&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
+            outlook: `https://outlook.live.com/calendar/0/action/compose/?path=%2fcalendar%2faction%2fcompose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
+            office365: `https://outlook.office.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`
         };
-
-        // Function to fetch event data from GitHub
-        const fetchEventData = async (eventId) => {
-            try {
-                const response = await fetch(`https://raw.githubusercontent.com/Whispering-Vine/cal/main/events/${eventId}.json`);
-                if (!response.ok) throw new Error('Event not found');
-                return await response.json();
-            } catch (error) {
-                console.error('Error fetching event data:', error);
-                return null;
-            }
-        };
-
-        // Function to generate calendar URLs
-        const generateCalendarUrls = (event) => {
-            const { title, description, location, startTime, endTime } = event;
-
-            const formattedTitle = encodeURIComponent(title);
-            const formattedDescription = encodeURIComponent(description);
-            const formattedLocation = encodeURIComponent(location);
-
-            return {
-                yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startTime}&ET=${endTime}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
-                google: `https://calendar.google.com/calendar/u/0/r/eventedit?text=${formattedTitle}&dates=${startTime}/${endTime}&details=${formattedDescription}&location=${formattedLocation}`,
-                outlook: `https://outlook.live.com/owa/?path=/calendar/action/compose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
-                office365: `https://outlook.office365.com/calendar/action/compose?startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
-                apple: `javascript:void(0);` // Placeholder to handle via JavaScript
-            };
-        };
-
-        // Function to handle opening Blob URL in a new tab
-        const openInNewTab = (type) => {
-            const eventId = window.location.pathname.split('/').pop(); // Get event ID from URL
-            fetchEventData(eventId).then(event => {
-                if (event) {
-                    if (type === 'ics') {
-                        const icsContent = generateICSFile(event);
-                        const blob = new Blob([icsContent], { type: 'text/calendar' });
-                        const url = URL.createObjectURL(blob);
-
-                        // Open Blob URL in a new tab
-                        window.open(url, '_blank');
-                        URL.revokeObjectURL(url);
-                    } else if (type === 'apple') {
-                        const calendarUrl = generateCalendarUrls(event).apple;
-
-                        // Open Apple Calendar URL in a new tab
-                        // Generate a valid Apple Calendar URL for testing
-                        const appleCalendarUrl = `https://calendar.apple.com/?event=${encodeURIComponent(JSON.stringify(event))}`;
-                        window.open(appleCalendarUrl, '_blank');
-                    }
-                }
-            });
-        };
-
-        // Main script to initialize the event page
-        (async () => {
-            const eventId = window.location.pathname.split('/').pop(); // Get event ID from URL
-            const eventData = await fetchEventData(eventId);
-
-            if (eventData) {
-                document.getElementById('event-title').textContent = eventData.title;
-                document.getElementById('event-day').textContent = new Date(eventData.startTime).getDate();
-                document.getElementById('event-month').textContent = new Date(eventData.startTime).toLocaleString('default', { month: 'short' }).toUpperCase();
-                document.getElementById('event-day-name').textContent = new Date(eventData.startTime).toLocaleString('default', { weekday: 'long' });
-                document.getElementById('event-full-date').textContent = new Date(eventData.startTime).toLocaleDateString();
-                document.getElementById('event-time').textContent = `${new Date(eventData.startTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - ${new Date(eventData.endTime).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-                document.getElementById('event-location').textContent = eventData.location;
-                document.getElementById('event-description').textContent = eventData.description;
-
-                // Generate calendar URLs
-                const calendarUrls = generateCalendarUrls(eventData);
-                document.getElementById('google-link').href = calendarUrls.google;
-                document.getElementById('apple-link').href = calendarUrls.apple;
-                document.getElementById('outlook-link').href = calendarUrls.outlook;
-                document.getElementById('yahoo-link').href = calendarUrls.yahoo;
-                document.getElementById('office365-link').href = calendarUrls.office365;
-                document.getElementById('ics-link').onclick = () => openInNewTab('ics');
-                document.getElementById('apple-link').onclick = () => openInNewTab('apple');
-            } else {
-                document.getElementById('event-details').style.display = 'none';
-                document.getElementById('not-found').style.display = 'block';
-            }
-        })();
+    };
+    // Function to handle 404 error
+    const showNotFound = () => {
+        document.getElementById('event-details').style.display = 'none';
+        document.getElementById('not-found').style.display = 'block';
+    };
+    // Function to update the DOM with event details
+    const updateEventDetails = (event) => {
+        document.getElementById('event-title').textContent = event.title;
+        document.getElementById('event-description').textContent = event.description;
+        document.getElementById('event-location').textContent = "📍" + event.location;
+        
+        const startDate = new Date(event.startTime);
+        const endDate = new Date(event.endTime);
+        
+        document.getElementById('event-day').textContent = startDate.getDate();
+        document.getElementById('event-month').textContent = startDate.toLocaleString('default', { month: 'short' }).toUpperCase();
+        document.getElementById('event-day-name').textContent = startDate.toLocaleString('default', { weekday: 'long' });
+        document.getElementById('event-full-date').textContent = startDate.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+        document.getElementById('event-time').textContent = `${startDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - ${endDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+    };
+    // Function to handle Apple Calendar ICS download
+    const downloadICS = (event) => {
+        event.preventDefault(); // Prevent the default link action
+        const eventId = window.location.pathname.split('/').pop();
+        if (!eventId) return;
+        fetchEventData(eventId).then(event => {
+            if (!event) return;
+            const icsContent = generateICSFile(event);
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const icsBlobUrl = URL.createObjectURL(blob);
+            // Create a temporary link to trigger download
+            const tempLink = document.createElement('a');
+            tempLink.href = icsBlobUrl;
+            tempLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
+            tempLink.click();
+            // Clean up
+            URL.revokeObjectURL(icsBlobUrl);
+        });
+    };
+    (async () => {
+        try {
+            // Get event ID from URL
+            const eventId = window.location.pathname.split('/').pop();
+            if (!eventId) throw new Error('No event ID provided in the URL');
+            // Fetch event data
+            const event = await fetchEventData(eventId);
+            if (!event) throw new Error('Event not found');
+            // Update the DOM with event details
+            updateEventDetails(event);
+            // Generate URLs and ICS file
+            const urls = generateCalendarUrls(event);
+            const icsContent = generateICSFile(event);
+            // Create and download ICS file
+            const blob = new Blob([icsContent], { type: 'text/calendar' });
+            const icsBlobUrl = URL.createObjectURL(blob);
+            const icsLink = document.getElementById('ics-link');
+            icsLink.href = icsBlobUrl;
+            icsLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
+            document.getElementById('yahoo-link').href = urls.yahoo;
+            document.getElementById('google-link').href = urls.google;
+            document.getElementById('outlook-link').href = urls.outlook;
+            document.getElementById('office365-link').href = urls.office365;
+            // Show event details and hide 404 message
+            document.getElementById('event-details').style.display = 'block';
+            document.getElementById('not-found').style.display = 'none';
+        } catch (error) {
+            console.error('Error fetching event data:', error);
+            showNotFound();
+        }
+    })();
     </script>
 </body>
 </html>
