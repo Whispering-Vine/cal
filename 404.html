@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+ <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Event</title>
@@ -125,13 +125,30 @@
      <div class="container">
          <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i>Events</a>
          <div class="timezone">UTC -8 America/Los_Angeles</div>
- @@ -34,148 +146,151 @@ <h1 id="event-title">Trefethen Wine Tasting</h1>
-                 <i class="fas fa-map-marker-alt"></i> 85 Foothill Rd. Ste 1 Reno, NV 89511
+        <div class="not-found" id="not-found" style="display: none;">
+            <h1>404 - Event Not Found</h1>
+            <p>The event you are looking for does not exist or has been moved.</p>
+        </div>
+        <div id="event-details">
+            <h1 id="event-title">Trefethen Wine Tasting</h1>
+            <div class="event-date">
+                <div class="calendar-icon">
+                    <div class="day" id="event-day">14</div>
+                    <div id="event-month">AUG</div>
+                </div>
+                <div class="event-info">
+                    <div id="event-day-name">Wednesday</div>
+                    <div id="event-full-date">Aug 14, 2024</div>
+                    <div id="event-time">4:00 PM - 7:00 PM</div>
+                </div>
+            </div>
+            <div class="event-location" id="event-location">
+                <i class="fas fa-map-marker-alt"></i> 85 Foothill Rd. Ste 1 Reno, NV 89511
+            </div>
+            <div class="event-note" id="event-description">
+                 Buy any Trefethen bottle from the tasting and the tasting fee will be refunded.
              </div>
-             <div class="event-note" id="event-description">
-                  Buy any Trefethen bottle from the tasting and the tasting fee will be refunded.
-              </div>
-              <div class="add-to-calendar">
+             <div class="add-to-calendar">
                    <h2>Add to Calendar</h2>
                    <div class="calendar-buttons">
                        <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
@@ -183,24 +200,24 @@
       // Function to fetch event data from GitHub
       const fetchEventData = async (eventId) => {
           try {
-              const response = await fetch(`https://raw.githubusercontent.com/Whispering-Vine/cal/main/events/${eventId}.json`);
-              if (!response.ok) throw new Error('Event not found');
-              return await response.json();
-          } catch (error) {
-              console.error('Error fetching event data:', error);
+             const response = await fetch(`https://raw.githubusercontent.com/Whispering-Vine/cal/main/events/${eventId}.json`);
+             if (!response.ok) throw new Error('Event not found');
+             return await response.json();
+         } catch (error) {
+             console.error('Error fetching event data:', error);
               return null;
           }
       };
       // Function to generate calendar URLs
       const generateCalendarUrls = (event) => {
           const { title, description, location, startTime, endTime } = event;
-          const formattedTitle = encodeURIComponent(title);
-          const formattedDescription = encodeURIComponent(description);
-          const formattedLocation = encodeURIComponent(location);
-          return {
-              yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startTime}&ET=${endTime}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
-              google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startTime}/${endTime}&ctz=America/Los_Angeles&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
-              outlook: `https://outlook.live.com/calendar/0/action/compose/?path=%2fcalendar%2faction%2fcompose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
+         const formattedTitle = encodeURIComponent(title);
+         const formattedDescription = encodeURIComponent(description);
+         const formattedLocation = encodeURIComponent(location);
+         return {
+             yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startTime}&ET=${endTime}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
+             google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startTime}/${endTime}&ctz=America/Los_Angeles&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
+             outlook: `https://outlook.live.com/calendar/0/action/compose/?path=%2fcalendar%2faction%2fcompose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
               office365: `https://outlook.office.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`
           };
       };
@@ -276,4 +293,4 @@
       })();
       </script>
   </body>
-</html>
+  </html>
