@@ -100,7 +100,10 @@
 
   // Function to format date and time in the required format
   const formatDateTime = (dateTime) => {
-    return dateTime.replace(/[-:]/g, '').replace('T', '') + 'Z';
+    // Extract date and time components
+    const [date, time] = dateTime.split('T');
+    // Remove milliseconds if present and append 'Z'
+    return `${date}T${time.split('.')[0]}Z`;
   };
 
   // Function to generate ICS file content
@@ -114,10 +117,9 @@
     const formattedStartTime = formatDateTime(startTime);
     const formattedEndTime = formatDateTime(endTime);
 
-    return `
-BEGIN:VCALENDAR
+    return `BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:Spatie calendar-links
+PRODID:Whispering Vine
 BEGIN:VEVENT
 UID:${uid}
 DTSTAMP:${formattedStartTime}
@@ -127,8 +129,7 @@ DESCRIPTION:${description}
 LOCATION:${location}
 SUMMARY:${title}
 END:VEVENT
-END:VCALENDAR
-    `;
+END:VCALENDAR`;
   };
 
   // Function to fetch event data from GitHub
