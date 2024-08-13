@@ -198,7 +198,7 @@
              const { title, startTime, endTime } = event;
              const formattedStartTime = new Date(startTime).toISOString().replace(/[-:]/g, '').slice(0, -1) + 'Z';
              const formattedEndTime = new Date(endTime).toISOString().replace(/[-:]/g, '').slice(0, -1) + 'Z';
-             const appleCalendarUrl = `webcal://raw.githubusercontent.com/Whispering-Vine/cal/main/events/${eventId}.ics`;
+             const appleCalendarUrl = `https://raw.githubusercontent.com/Whispering-Vine/cal/main/events/${eventId}.ics`;
              window.open(appleCalendarUrl, '_blank');
          });
      };
