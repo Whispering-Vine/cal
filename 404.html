@@ -250,7 +250,9 @@ END:VCALENDAR`;
                         const calendarUrl = generateCalendarUrls(event).apple;
 
                         // Open Apple Calendar URL in a new tab
-                        window.open(calendarUrl, '_blank');
+                        // Generate a valid Apple Calendar URL for testing
+                        const appleCalendarUrl = `https://calendar.apple.com/?event=${encodeURIComponent(JSON.stringify(event))}`;
+                        window.open(appleCalendarUrl, '_blank');
                     }
                 }
             });
