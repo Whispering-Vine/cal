@@ -170,10 +170,14 @@
         // Generate unique UID
         const uid = generateUID();
 
-        // Format start and end times
+         // Format start and end times
         const formattedStartTime = formatDateTime(startTime);
         const formattedEndTime = formatDateTime(endTime);
         const formattedNow = formatDateTime(new Date().toISOString());
+
+        // Escape special characters and replace newlines for ICS format
+        const escapedDescription = description.replace(/[\n\r]+/g, '\\n').replace(/[,;]/g, '\\$&');
+        const escapedLocation = location.replace(/[,;]/g, '\\$&');
 
         return `BEGIN:VCALENDAR
 VERSION:2.0
@@ -183,8 +187,8 @@ UID:${uid}
 DTSTAMP:${formattedNow}
 DTSTART:${formattedStartTime}
 DTEND:${formattedEndTime}
-DESCRIPTION:${description}
-LOCATION:${location}
+DESCRIPTION:${escapedDescription}
+LOCATION:${escapedLocation}
 SUMMARY:${title}
 END:VEVENT
 END:VCALENDAR`;
