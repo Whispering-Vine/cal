@@ -150,13 +150,12 @@
     };
 
     // Function to format date and time in the required format
-    // Updated function to format date and time in the required format for ICS files
     const formatDateTime = (dateTime) => {
         const date = new Date(dateTime);
         return date.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
     };
 
-    // Function to generate ICS file content (updated with new formatDateTime function)
+    // Function to generate ICS file content
     const generateICSFile = (event) => {
         const { title, description, location, startTime, endTime } = event;
 
@@ -261,8 +260,9 @@ END:VCALENDAR`;
 
             // Create and download ICS file
             const blob = new Blob([icsContent], { type: 'text/calendar' });
-            document.getElementById('ics-link').href = URL.createObjectURL(blob);
-            document.getElementById('apple-link').href = URL.createObjectURL(blob);
+            const icsBlobUrl = URL.createObjectURL(blob);
+            document.getElementById('ics-link').href = icsBlobUrl;
+            document.getElementById('apple-link').href = icsBlobUrl;
 
             // Show event details and hide 404 message
             document.getElementById('event-details').style.display = 'block';
