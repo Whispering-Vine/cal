@@ -26,6 +26,22 @@
             width: 100%;
             position: relative;
         }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .back-button i {
+            margin-right: 8px;
+        }
         h1 {
             font-size: 28px;
             margin-bottom: 20px;
@@ -107,6 +123,7 @@
 </head>
 <body>
     <div class="container">
+        <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i>Events</a>
         <div class="timezone">UTC -8 America/Los_Angeles</div>
         <div class="not-found" id="not-found" style="display: none;">
             <h1>404 - Event Not Found</h1>
