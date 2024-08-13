@@ -156,14 +156,13 @@
     };
 
     // Function to format date and time in the required format
+    // Updated function to format date and time in the required format for ICS files
     const formatDateTime = (dateTime) => {
-        // Extract date and time components
-        const [date, time] = dateTime.split('T');
-        // Remove milliseconds if present and append 'Z'
-        return `${date}T${time.split('.')[0]}Z`;
+        const date = new Date(dateTime);
+        return date.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
     };
 
-    // Function to generate ICS file content
+    // Function to generate ICS file content (updated with new formatDateTime function)
     const generateICSFile = (event) => {
         const { title, description, location, startTime, endTime } = event;
 
@@ -173,13 +172,14 @@
         // Format start and end times
         const formattedStartTime = formatDateTime(startTime);
         const formattedEndTime = formatDateTime(endTime);
+        const formattedNow = formatDateTime(new Date().toISOString());
 
         return `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:Whispering Vine
 BEGIN:VEVENT
 UID:${uid}
-DTSTAMP:${formattedStartTime}
+DTSTAMP:${formattedNow}
 DTSTART:${formattedStartTime}
 DTEND:${formattedEndTime}
 DESCRIPTION:${description}
