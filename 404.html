@@ -244,7 +244,7 @@ END:VCALENDAR`;
           event.preventDefault(); // Prevent the default link action
           const eventId = window.location.pathname.split('/').pop();
           if (!eventId) return;
-          window.location.href = `cal.wvwine.co/events/${eventId}.ics`;
+          window.location.href = `https://cal.wvwine.co/events/${eventId}.ics`;
       };
        
       // Function to handle Apple Calendar ICS download
