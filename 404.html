@@ -209,28 +209,28 @@ END:VCALENDAR`;
            }
        };
        // Function to generate calendar URLs
-       const generateCalendarUrls = (event) => {
-           const { title, description, location, startTime, endTime } = event;
-           const formattedTitle = encodeURIComponent(title);
-           const formattedDescription = encodeURIComponent(description);
-           const formattedLocation = encodeURIComponent(location);
-       
-           // Format the dates to be in 'YYYYMMDDTHHmmss' format for Google Calendar
-           const formatGoogleDate = (dateTime) => {
-               const date = new Date(dateTime);
-               return date.toISOString().replace(/[-:]/g, '').slice(0, -5);
-           };
-       
-           const startDate = formatGoogleDate(startTime);
-           const endDate = formatGoogleDate(endTime);
-       
-           return {
-               yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startDate}&ET=${endDate}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
-               google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startDate}/${endDate}&ctz=America/Los_Angeles&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
-               outlook: `https://outlook.live.com/calendar/0/action/compose/?path=%2fcalendar%2faction%2fcompose&rru=addevent&startdt=${startDate}&enddt=${endDate}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
-               office365: `https://outlook.office.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${startDate}&enddt=${endDate}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`
-           };
-       };
+      const generateCalendarUrls = (event) => {
+          const { title, description, location, startTime, endTime } = event;
+          const formattedTitle = encodeURIComponent(title);
+          const formattedDescription = encodeURIComponent(description);
+          const formattedLocation = encodeURIComponent(location);
+      
+          // Convert times to Google Calendar format (still in UTC)
+          const formatGoogleDate = (dateTime) => {
+              const date = new Date(dateTime);
+              return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+          };
+      
+          const startDate = formatGoogleDate(startTime);
+          const endDate = formatGoogleDate(endTime);
+      
+          return {
+              yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startDate}&ET=${endDate}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
+              google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startDate}/${endDate}&ctz=America/Los_Angeles&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
+              outlook: `https://outlook.live.com/calendar/0/action/compose/?path=%2fcalendar%2faction%2fcompose&rru=addevent&startdt=${startDate}&enddt=${endDate}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
+              office365: `https://outlook.office.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${startDate}&enddt=${endDate}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`
+          };
+      };
 
       // Function to handle 404 error
       const showNotFound = () => {
