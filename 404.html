@@ -151,12 +151,12 @@
               <div class="add-to-calendar">
                     <h2>Add to Calendar</h2>
                     <div class="calendar-buttons">
-                        <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
-                       <a href="#" class="calendar-button" id="apple-link" onclick="downloadICS(event)" download="cal.ics"><i class="fab fa-apple"></i> Apple</a>
+                       <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
+                       <a href="#" class="calendar-button" id="apple-link" onclick="redirectToAppleCalendar(event)"><i class="fab fa-apple"></i> Apple</a>
                        <a href="#" class="calendar-button" id="outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
                        <a href="#" class="calendar-button" id="yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
                        <a href="#" class="calendar-button" id="office365-link"><i class="fab fa-microsoft"></i> Office365</a>
-                      <a href="#" class="calendar-button" id="ics-link"><i class="fas fa-calendar-alt"></i> ICS File</a>
+                       <a href="#" class="calendar-button" id="ics-link"><i class="fas fa-calendar-alt"></i> ICS File</a>
                   </div>
               </div>
           </div>
@@ -184,18 +184,18 @@
           const escapedDescription = description.replace(/[\n\r]+/g, '\\n').replace(/[,;]/g, '\\$&');
           const escapedLocation = location.replace(/[,;]/g, '\\$&');
           return `BEGIN:VCALENDAR
-  VERSION:2.0
-  PRODID:Whispering Vine
-  BEGIN:VEVENT
+ VERSION:2.0
+ PRODID:Whispering Vine
+ BEGIN:VEVENT
  UID:${uid}
  DTSTAMP:${formattedNow}
  DTSTART:${formattedStartTime}
  DTEND:${formattedEndTime}
  DESCRIPTION:${escapedDescription}
  LOCATION:${escapedLocation}
-  SUMMARY:${title}
-  END:VEVENT
-  END:VCALENDAR`;
+ SUMMARY:${title}
+ END:VEVENT
+ END:VCALENDAR`;
       };
        // Function to fetch event data from GitHub
        const fetchEventData = async (eventId) => {
@@ -218,7 +218,7 @@
               yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startTime}&ET=${endTime}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
               google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startTime}/${endTime}&ctz=America/Los_Angeles&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
               outlook: `https://outlook.live.com/calendar/0/action/compose/?path=%2fcalendar%2faction%2fcompose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
-               office365: `https://outlook.office.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`
+              office365: `https://outlook.office.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`
            };
        };
       // Function to handle 404 error
@@ -239,6 +239,14 @@
           document.getElementById('event-full-date').textContent = startDate.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
           document.getElementById('event-time').textContent = `${startDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - ${endDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
       };
+      // Function to redirect to Apple Calendar with webcal:// URL
+      const redirectToAppleCalendar = (event) => {
+          event.preventDefault(); // Prevent the default link action
+          const eventId = window.location.pathname.split('/').pop();
+          if (!eventId) return;
+          window.location.href = `webcal://cal.wvwine.co/${eventId}.ics`;
+      };
+       
       // Function to handle Apple Calendar ICS download
       const downloadICS = (event) => {
           event.preventDefault(); // Prevent the default link action
