@@ -184,18 +184,18 @@
           const escapedDescription = description.replace(/[\n\r]+/g, '\\n').replace(/[,;]/g, '\\$&');
           const escapedLocation = location.replace(/[,;]/g, '\\$&');
           return `BEGIN:VCALENDAR
- VERSION:2.0
- PRODID:Whispering Vine
- BEGIN:VEVENT
- UID:${uid}
- DTSTAMP:${formattedNow}
- DTSTART:${formattedStartTime}
- DTEND:${formattedEndTime}
- DESCRIPTION:${escapedDescription}
- LOCATION:${escapedLocation}
- SUMMARY:${title}
- END:VEVENT
- END:VCALENDAR`;
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${formattedNow}
+DTSTART:${formattedStartTime}
+DTEND:${formattedEndTime}
+DESCRIPTION:${escapedDescription}
+LOCATION:${escapedLocation}
+SUMMARY:${title}
+END:VEVENT
+END:VCALENDAR`;
       };
        // Function to fetch event data from GitHub
        const fetchEventData = async (eventId) => {
