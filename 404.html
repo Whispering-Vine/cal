@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
  <html lang="en">
   <head>
       <meta charset="UTF-8">
@@ -24,7 +24,104 @@
               padding: 30px;
               max-width: 600px;
               width: 100%;
- @@ -125,13 +125,30 @@
+              position: relative;
+          }
+          .back-button {
+              position: fixed;
+              top: 20px;
+              left: 20px;
+              background: #9c9c9c;
+              color: #fff;
+              border: none;
+              border-radius: 5px;
+              padding: 10px 15px;
+              font-size: 16px;
+              cursor: pointer;
+              text-decoration: none;
+          }
+          .back-button i {
+              margin-right: 8px;
+          }
+          h1 {
+              font-size: 28px;
+              margin-bottom: 20px;
+          }
+          .event-date {
+              display: flex;
+              align-items: center;
+              margin-bottom: 20px;
+          }
+          .calendar-icon {
+              background-color: #000;
+              color: #fff;
+              width: 60px;
+              height: 60px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              font-weight: bold;
+              margin-right: 15px;
+              border-radius: 5px;
+          }
+          .calendar-icon .day {
+              font-size: 24px;
+          }
+          .event-info {
+              font-size: 18px;
+          }
+          .event-location, .event-details, .event-price {
+              margin-top: 20px;
+              font-style: italic;
+              font-size: 16px;
+          }
+          .event-note {
+              margin-top: 20px;
+              white-space: pre-line;
+          }
+          .add-to-calendar {
+              margin-top: 30px;
+          }
+          .add-to-calendar h2 {
+              font-size: 20px;
+              margin-bottom: 15px;
+          }
+          .calendar-buttons {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 10px;
+          }
+          .calendar-button {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+              text-decoration: none;
+              color: #333;
+              font-weight: bold;
+              cursor: pointer;
+          }
+          .calendar-button i {
+              margin-right: 5px;
+          }
+          .timezone {
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              background-color: #f0f0f0;
+              padding: 5px 10px;
+              border-radius: 15px;
+              font-size: 12px;
+          }
+          .not-found {
+              text-align: center;
+              margin-top: 50px;
+          }
+      </style>
+  </head>
+  <body>
       <div class="container">
           <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i>Events</a>
           <div class="timezone">UTC -8 America/Los_Angeles</div>
@@ -75,7 +172,11 @@
           return date.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
       };
       // Function to generate ICS file content
- @@ -163,44 +180,44 @@
+      const generateICSFile = (event) => {
+          const { title, description, location, startTime, endTime } = event;
+          // Generate unique UID
+          const uid = generateUID();
+          // Format start and end times
           const formattedStartTime = formatDateTime(startTime);
           const formattedEndTime = formatDateTime(endTime);
           const formattedNow = formatDateTime(new Date().toISOString());
@@ -190,4 +291,4 @@
        })();
        </script>
    </body>
-</html>
+   </html>
