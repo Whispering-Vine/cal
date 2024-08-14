@@ -216,7 +216,7 @@ END:VCALENDAR`;
           const formattedLocation = encodeURIComponent(location);
           return {
               yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startTime}&ET=${endTime}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
-              google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startTime}/${endTime}&ctz=America/Los_Angeles&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
+              google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startTime}/${endTime}&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
               outlook: `https://outlook.live.com/calendar/0/action/compose/?path=%2fcalendar%2faction%2fcompose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
               office365: `https://outlook.office.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${startTime}&enddt=${endTime}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`
            };
