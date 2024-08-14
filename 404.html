@@ -273,6 +273,7 @@ END:VCALENDAR`;
         };
         // Function to update the DOM with event details
         const updateEventDetails = (event) => {
+            document.title = event.title; // Update the page title
             document.getElementById('event-title').textContent = event.title;
             document.getElementById('event-description').textContent = event.description;
             document.getElementById('event-location').textContent = "📍" + event.location;
