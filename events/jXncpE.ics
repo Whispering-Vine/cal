@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:uoQRvL
+DTSTAMP:20240815T184107Z
+DTSTART:20240821T230000Z
+DTEND:20240822T020000Z
+DESCRIPTION:📅 August 21st\n🕕 4 - 7 PM\n🍷 Roederer Estate Winery\n📍Whispering Vine South Creek\n💵 $15 per person\nBuy any bottle from the tasting and the tasting fee will be refunded.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:🥂 Roederer vs Scharffenberger Tasting
+END:VEVENT
+END:VCALENDAR
