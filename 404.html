@@ -284,7 +284,7 @@ END:VCALENDAR`;
             document.getElementById('event-month').textContent = startDate.toLocaleString('default', { month: 'short' }).toUpperCase();
             document.getElementById('event-day-name').textContent = startDate.toLocaleString('default', { weekday: 'long' });
             document.getElementById('event-full-date').textContent = startDate.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
-            document.getElementById('event-time').textContent = `${startDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} - ${endDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+            document.getElementById('event-time').textContent = `${startDate.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} - ${endDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
         };
         // Function to redirect to Apple Calendar with webcal:// URL
         const redirectToAppleCalendar = (event) => {
