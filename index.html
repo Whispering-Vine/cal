@@ -105,7 +105,7 @@
       // Function to format time in the required format
       const formatTime = (dateTime) => {
         const date = new Date(dateTime);
-        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
       };
       // Function to display the list of events
       const displayEvents = async () => {
