@@ -216,9 +216,18 @@ END:VCALENDAR`;
         });
         
         isModalOpen = true;
+
+        // Start the timeout to close the modal after 5 seconds
+        closeModalTimeout = setTimeout(() => {
+            closeModal();
+        }, 5000);
     };
 
     const closeModal = () => {
+        if (closeModalTimeout) {
+            clearTimeout(closeModalTimeout);
+            closeModalTimeout = null;
+        }
         modal.classList.remove('wv-show');
         setTimeout(() => {
             modal.style.display = 'none';
@@ -293,7 +302,7 @@ END:VCALENDAR`;
             closeModal();
         }
     });
-    
+
     window.addEventListener('wheel', updateModalPosition);  // For zoom events on desktop
     window.addEventListener('touchmove', updateModalPosition);  // For mobile scrolling and pinch-zoom
 
