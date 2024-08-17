@@ -3,53 +3,43 @@
     const style = document.createElement('style');
     style.textContent = `
         .wv-calendar-modal {
-            display: none;
-            position: fixed;
+            position: absolute;
             z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
+            display: none;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            width: 300px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .wv-calendar-modal.wv-show {
+            opacity: 1;
+            transform: translateY(0);
         }
         .wv-calendar-modal * {
             font-family: Arial, sans-serif;
         }
-        .wv-calendar-modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 30px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: relative;
-            animation-name: wvModalopen;
-            animation-duration: 0.4s;
-        }
-        @keyframes wvModalopen {
-            from {opacity: 0}
-            to {opacity: 1}
-        }
         .wv-calendar-close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
             color: #aaa;
-            float: right;
-            font-size: 28px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
         }
         .wv-calendar-close:hover,
         .wv-calendar-close:focus {
-            color: black;
-            text-decoration: none;
+            color: #333;
         }
         .wv-calendar-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         .wv-calendar-button {
             display: flex;
@@ -66,17 +56,18 @@
         }
         .wv-calendar-button i {
             margin-right: 5px;
-            margin-bottom: 2px;
         }
         .wv-calendar-button:hover {
             background-color: #f0f0f0;
             color: #f55555;
             transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
         .wv-calendar-modal h2 {
             color: #333;
             margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 18px;
         }
     `;
     document.head.appendChild(style);
@@ -85,17 +76,15 @@
     const modal = document.createElement('div');
     modal.className = 'wv-calendar-modal';
     modal.innerHTML = `
-        <div class="wv-calendar-modal-content">
-            <span class="wv-calendar-close">&times;</span>
-            <h2>Select Calendar</h2>
-            <div class="wv-calendar-buttons">
-                <a href="#" class="wv-calendar-button" id="wv-google-link"><i class="fab fa-google"></i> Google</a>
-                <a href="#" class="wv-calendar-button" id="wv-apple-link"><i class="fab fa-apple"></i> Apple</a>
-                <a href="#" class="wv-calendar-button" id="wv-outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
-                <a href="#" class="wv-calendar-button" id="wv-yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
-                <a href="#" class="wv-calendar-button" id="wv-office365-link"><i class="fas fa-envelope"></i> Office 365</a>
-                <a href="#" class="wv-calendar-button" id="wv-ics-link"><i class="fas fa-file-alt"></i> ICS File</a>
-            </div>
+        <span class="wv-calendar-close">&times;</span>
+        <h2>Select Calendar</h2>
+        <div class="wv-calendar-buttons">
+            <a href="#" class="wv-calendar-button" id="wv-google-link"><i class="fab fa-google"></i> Google</a>
+            <a href="#" class="wv-calendar-button" id="wv-apple-link"><i class="fab fa-apple"></i> Apple</a>
+            <a href="#" class="wv-calendar-button" id="wv-outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
+            <a href="#" class="wv-calendar-button" id="wv-yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
+            <a href="#" class="wv-calendar-button" id="wv-office365-link"><i class="fas fa-envelope"></i> Office 365</a>
+            <a href="#" class="wv-calendar-button" id="wv-ics-link"><i class="fas fa-file-alt"></i> ICS File</a>
         </div>
     `;
     document.body.appendChild(modal);
@@ -153,15 +142,47 @@ END:VCALENDAR`;
     };
 
     // Modal functionality
-    const openModal = () => modal.style.display = "block";
-    const closeModal = () => modal.style.display = "none";
-    modal.querySelector('.wv-calendar-close').onclick = closeModal;
-    window.onclick = (event) => {
-        if (event.target == modal) closeModal();
+    const positionModal = (buttonRect) => {
+        const modalRect = modal.getBoundingClientRect();
+        const spaceAbove = buttonRect.top;
+        const spaceBelow = window.innerHeight - buttonRect.bottom;
+        
+        let top, left;
+        
+        if (spaceBelow >= modalRect.height || spaceBelow > spaceAbove) {
+            // Position below the button
+            top = buttonRect.bottom + window.scrollY;
+        } else {
+            // Position above the button
+            top = buttonRect.top - modalRect.height + window.scrollY;
+        }
+        
+        // Center horizontally relative to the button
+        left = buttonRect.left + (buttonRect.width / 2) - (modalRect.width / 2);
+        
+        // Ensure the modal stays within the viewport
+        left = Math.max(10, Math.min(left, window.innerWidth - modalRect.width - 10));
+        
+        modal.style.top = `${top}px`;
+        modal.style.left = `${left}px`;
     };
 
+    const openModal = (button) => {
+        const buttonRect = button.getBoundingClientRect();
+        positionModal(buttonRect);
+        modal.style.display = 'block';
+        setTimeout(() => modal.classList.add('wv-show'), 10);
+    };
+
+    const closeModal = () => {
+        modal.classList.remove('wv-show');
+        setTimeout(() => modal.style.display = 'none', 300);
+    };
+
+    modal.querySelector('.wv-calendar-close').onclick = closeModal;
+
     // Fetch event details and generate links
-    const fetchEventDetailsAndGenerateLinks = async (eventId) => {
+    const fetchEventDetailsAndGenerateLinks = async (eventId, button) => {
         try {
             const response = await fetch(`https://raw.githubusercontent.com/Whispering-Vine/cal/main/events/${eventId}.json`);
             if (!response.ok) throw new Error('Event not found');
@@ -185,7 +206,7 @@ END:VCALENDAR`;
                 window.location.href = `https://cal.wvwine.co/events/${eventId}.ics`;
             };
 
-            openModal();
+            openModal(button);
         } catch (error) {
             console.error('Error fetching event data:', error);
         }
@@ -197,7 +218,20 @@ END:VCALENDAR`;
         if (button) {
             const eventId = button.dataset.eventId;
             if (eventId) {
-                fetchEventDetailsAndGenerateLinks(eventId);
+                fetchEventDetailsAndGenerateLinks(eventId, button);
+            }
+        } else if (!modal.contains(e.target)) {
+            closeModal();
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (modal.style.display === 'block') {
+            const button = document.querySelector('[data-event-id]');
+            if (button) {
+                const buttonRect = button.getBoundingClientRect();
+                positionModal(buttonRect);
             }
         }
     });
