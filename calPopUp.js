@@ -1,10 +1,12 @@
+<html>
+<body>
+<script>
 (function() {
     // Create and append styles
     const style = document.createElement('style');
     style.textContent = `
         .wv-calendar-modal {
             position: fixed;
-            z-index: 1000;
             display: none;
             background-color: #fff;
             border-radius: 10px;
@@ -142,8 +144,10 @@ END:VCALENDAR`;
     let lastClickedButton = null;
     let isModalOpen = false;
 
-    const positionModal = (button) => {
-        const buttonRect = button.getBoundingClientRect();
+    const positionModal = () => {
+        if (!lastClickedButton || !isModalOpen) return;
+
+        const buttonRect = lastClickedButton.getBoundingClientRect();
         const modalRect = modal.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
         const viewportHeight = window.innerHeight;
@@ -187,7 +191,12 @@ END:VCALENDAR`;
         left = Math.max(10, Math.min(left, viewportWidth - modalRect.width - 10));
         top = Math.max(10, Math.min(top, viewportHeight - modalRect.height - 10));
 
-        return { left, top };
+        // Set z-index based on the button
+        const buttonZIndex = window.getComputedStyle(lastClickedButton).zIndex || 1;
+        modal.style.zIndex = parseInt(buttonZIndex, 10) + 1;
+
+        modal.style.left = `${left}px`;
+        modal.style.top = `${top}px`;
     };
 
     const openModal = (button) => {
@@ -201,9 +210,7 @@ END:VCALENDAR`;
         modal.offsetHeight;
         
         // Position the modal
-        const { left, top } = positionModal(button);
-        modal.style.left = `${left}px`;
-        modal.style.top = `${top}px`;
+        positionModal();
         
         // Fade in the modal
         requestAnimationFrame(() => {
@@ -219,6 +226,7 @@ END:VCALENDAR`;
         setTimeout(() => {
             modal.style.display = 'none';
             isModalOpen = false;
+            lastClickedButton = null;
         }, 300);
     };
 
@@ -269,13 +277,34 @@ END:VCALENDAR`;
         }
     });
 
-    // Modify the resize event listener
-    window.addEventListener('resize', () => {
-        if (lastClickedButton && isModalOpen) {
-            const { left, top } = positionModal(lastClickedButton);
-            modal.style.left = `${left}px`;
-            modal.style.top = `${top}px`;
+    // Handle window resize, scroll, and zoom
+    const updateModalPosition = () => {
+        if (isModalOpen) {
+            positionModal();
         }
+    };
+
+    window.addEventListener('resize', updateModalPosition);
+
+    document.addEventListener('scroll', () => {
+    if (!isModalOpen) return;
+
+    const buttonRect = lastClickedButton.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    if (buttonRect.bottom < 0 || buttonRect.top > viewportHeight) {
+        closeModal();
+    }
+});
+    window.addEventListener('wheel', updateModalPosition);  // For zoom events on desktop
+    window.addEventListener('touchmove', updateModalPosition);  // For mobile scrolling and pinch-zoom
+
+    // Use MutationObserver to detect changes in the DOM that might affect positioning
+    const observer = new MutationObserver(updateModalPosition);
+    observer.observe(document.body, { 
+        attributes: true, 
+        childList: true, 
+        subtree: true 
     });
 
     // Load Font Awesome
@@ -284,3 +313,10 @@ END:VCALENDAR`;
     link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
     document.head.appendChild(link);
 })();
+</script>
+
+<button data-event-id="jXncpE">
+    <i class="fas fa-calendar-plus"></i> Add to Calendar
+</button>
+</body>
+</html>
