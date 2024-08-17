@@ -282,7 +282,18 @@ END:VCALENDAR`;
     };
 
     window.addEventListener('resize', updateModalPosition);
-    window.addEventListener('scroll', updateModalPosition);
+
+    document.addEventListener('scroll', () => {
+        if (!isModalOpen) return;
+
+        const buttonRect = lastClickedButton.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+
+        if (buttonRect.bottom < 0 || buttonRect.top > viewportHeight) {
+            closeModal();
+        }
+    });
+    
     window.addEventListener('wheel', updateModalPosition);  // For zoom events on desktop
     window.addEventListener('touchmove', updateModalPosition);  // For mobile scrolling and pinch-zoom
 
