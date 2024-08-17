@@ -1,6 +1,3 @@
-<html>
-<body>
-<script>
 (function() {
     // Create and append styles
     const style = document.createElement('style');
@@ -303,10 +300,3 @@ END:VCALENDAR`;
     link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css';
     document.head.appendChild(link);
 })();
-</script>
-
-<button data-event-id="jXncpE">
-    <i class="fas fa-calendar-plus"></i> Add to Calendar
-</button>
-</body>
-</html>
