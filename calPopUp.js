@@ -3,7 +3,7 @@
     const style = document.createElement('style');
     style.textContent = `
         .wv-calendar-modal {
-            position: absolute;
+            position: fixed;
             z-index: 1000;
             display: none;
             background-color: #fff;
@@ -12,12 +12,10 @@
             padding: 20px;
             width: 300px;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transition: opacity 0.3s ease;
         }
         .wv-calendar-modal.wv-show {
             opacity: 1;
-            transform: translateY(0);
         }
         .wv-calendar-modal * {
             font-family: Arial, sans-serif;
@@ -141,42 +139,87 @@ END:VCALENDAR`;
         };
     };
 
-    // Modal functionality
-    const positionModal = (buttonRect) => {
+    let lastClickedButton = null;
+    let isModalOpen = false;
+
+    const positionModal = (button) => {
+        const buttonRect = button.getBoundingClientRect();
         const modalRect = modal.getBoundingClientRect();
-        const spaceAbove = buttonRect.top;
-        const spaceBelow = window.innerHeight - buttonRect.bottom;
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
         
-        let top, left;
-        
-        if (spaceBelow >= modalRect.height || spaceBelow > spaceAbove) {
-            // Position below the button
-            top = buttonRect.bottom + window.scrollY;
+        let left, top;
+
+        // Determine horizontal position
+        if (viewportWidth - buttonRect.right >= modalRect.width) {
+            // Position to the right
+            left = buttonRect.left;
+        } else if (buttonRect.left >= modalRect.width) {
+            // Position to the left
+            left = buttonRect.right - modalRect.width;
         } else {
-            // Position above the button
-            top = buttonRect.top - modalRect.height + window.scrollY;
+            // Center horizontally if no space on either side
+            left = (viewportWidth - modalRect.width) / 2;
         }
-        
-        // Center horizontally relative to the button
-        left = buttonRect.left + (buttonRect.width / 2) - (modalRect.width / 2);
-        
+
+        // Determine vertical position
+        if (viewportHeight - buttonRect.bottom >= modalRect.height) {
+            // Position below the button
+            top = buttonRect.bottom;
+        } else if (buttonRect.top >= modalRect.height) {
+            // Position above the button
+            top = buttonRect.top - modalRect.height;
+        } else {
+            // Center vertically if no space above or below
+            top = (viewportHeight - modalRect.height) / 2;
+        }
+
+        // Adjust horizontal position based on vertical position
+        if (top === buttonRect.bottom) {
+            // If below the button
+            left = (left === buttonRect.left) ? buttonRect.left : buttonRect.right - modalRect.width;
+        } else if (top === buttonRect.top - modalRect.height) {
+            // If above the button
+            left = (left === buttonRect.left) ? buttonRect.left : buttonRect.right - modalRect.width;
+        }
+
         // Ensure the modal stays within the viewport
-        left = Math.max(10, Math.min(left, window.innerWidth - modalRect.width - 10));
-        
-        modal.style.top = `${top}px`;
-        modal.style.left = `${left}px`;
+        left = Math.max(10, Math.min(left, viewportWidth - modalRect.width - 10));
+        top = Math.max(10, Math.min(top, viewportHeight - modalRect.height - 10));
+
+        return { left, top };
     };
 
     const openModal = (button) => {
-        const buttonRect = button.getBoundingClientRect();
-        positionModal(buttonRect);
+        lastClickedButton = button;
+        
+        // Make the modal visible but still transparent
         modal.style.display = 'block';
-        setTimeout(() => modal.classList.add('wv-show'), 10);
+        modal.style.opacity = '0';
+        
+        // Force a reflow to ensure the modal is in the DOM
+        modal.offsetHeight;
+        
+        // Position the modal
+        const { left, top } = positionModal(button);
+        modal.style.left = `${left}px`;
+        modal.style.top = `${top}px`;
+        
+        // Fade in the modal
+        requestAnimationFrame(() => {
+            modal.style.opacity = '1';
+            modal.classList.add('wv-show');
+        });
+        
+        isModalOpen = true;
     };
 
     const closeModal = () => {
         modal.classList.remove('wv-show');
-        setTimeout(() => modal.style.display = 'none', 300);
+        setTimeout(() => {
+            modal.style.display = 'none';
+            isModalOpen = false;
+        }, 300);
     };
 
     modal.querySelector('.wv-calendar-close').onclick = closeModal;
@@ -218,21 +261,20 @@ END:VCALENDAR`;
         if (button) {
             const eventId = button.dataset.eventId;
             if (eventId) {
+                e.preventDefault();
                 fetchEventDetailsAndGenerateLinks(eventId, button);
             }
-        } else if (!modal.contains(e.target)) {
+        } else if (!modal.contains(e.target) && isModalOpen) {
             closeModal();
         }
     });
 
-    // Handle window resize
+    // Modify the resize event listener
     window.addEventListener('resize', () => {
-        if (modal.style.display === 'block') {
-            const button = document.querySelector('[data-event-id]');
-            if (button) {
-                const buttonRect = button.getBoundingClientRect();
-                positionModal(buttonRect);
-            }
+        if (lastClickedButton && isModalOpen) {
+            const { left, top } = positionModal(lastClickedButton);
+            modal.style.left = `${left}px`;
+            modal.style.top = `${top}px`;
         }
     });
 
