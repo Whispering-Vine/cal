@@ -113,6 +113,10 @@
           const response = await fetch('https://raw.githubusercontent.com/Whispering-Vine/cal/main/events.json'); // Assuming this file contains all events
           if (!response.ok) throw new Error('Unable to fetch events');
           const events = await response.json();
+
+          / Sort events by start time (nearest to farthest)
+          events.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+            
           const eventList = document.getElementById('event-list');
           eventList.innerHTML = ''; // Clear any existing content
           events.forEach(event => {
