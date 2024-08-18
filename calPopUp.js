@@ -11,7 +11,7 @@
             padding: 20px;
             width: 300px;
             opacity: 0;
-            transition: opacity 0.3s ease, top 0.3s ease, left 0.3s ease, transform 0.3s ease;
+            transition: opacity 0.3s ease;
         }
         .wv-calendar-modal.wv-show {
             opacity: 1;
