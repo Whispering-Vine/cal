@@ -114,7 +114,7 @@
           if (!response.ok) throw new Error('Unable to fetch events');
           const events = await response.json();
 
-          / Sort events by start time (nearest to farthest)
+          // Sort events by start time (nearest to farthest)
           events.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
             
           const eventList = document.getElementById('event-list');
