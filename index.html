@@ -57,7 +57,7 @@
         color: #000000;
         margin: 0 0 10px 0;
       }
-      .event-date, .event-time {
+      .event-date, .event-time, .event-location {
         font-size: 16px;
         color: #7f8c8d;
         margin-bottom: 5px;
@@ -110,13 +110,13 @@
       // Function to display the list of events
       const displayEvents = async () => {
         try {
-          const response = await fetch('https://raw.githubusercontent.com/Whispering-Vine/cal/main/events.json'); // Assuming this file contains all events
+          const response = await fetch('https://raw.githubusercontent.com/Whispering-Vine/cal/main/events.json');
           if (!response.ok) throw new Error('Unable to fetch events');
           const events = await response.json();
-
+          
           // Sort events by start time (nearest to farthest)
           events.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
-            
+          
           const eventList = document.getElementById('event-list');
           eventList.innerHTML = ''; // Clear any existing content
           events.forEach(event => {
@@ -125,6 +125,7 @@
               <h2 class="event-title">${event.title}</h2>
               <div class="event-date">${formatDate(event.startTime)}</div>
               <div class="event-time">${formatTime(event.startTime)} - ${formatTime(event.endTime)}</div>
+              <div class="event-location">${event.location}</div>
               <div class="add-to-calendar">
                 <a href="https://cal.wvwine.co/${event.id}" class="calendar-button">Add to Calendar</a>
               </div>
