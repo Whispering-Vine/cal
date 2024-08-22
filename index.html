@@ -134,13 +134,15 @@
           events.forEach(event => {
             const listItem = document.createElement('li');
             listItem.innerHTML = `
-              <h2 class="event-title">${event.title}</h2>
-              <div class="event-date">${formatDate(event.startTime)}</div>
-              <div class="event-time">${formatTime(event.startTime)} - ${formatTime(event.endTime)}</div>
-              <div class="event-location">${event.location}</div>
-              <div class="add-to-calendar">
-                <a href="https://cal.wvwine.co/${event.id}" class="calendar-button">Add to Calendar</a>
-              </div>
+              <a href="https://cal.wvwine.co/${event.id}" style="text-decoration: none; color: inherit;">
+                <h2 class="event-title">${event.title}</h2>
+                <div class="event-date">${formatDate(event.startTime)}</div>
+                <div class="event-time">${formatTime(event.startTime)} - ${formatTime(event.endTime)}</div>
+                <div class="event-location">${event.location}</div>
+                <div class="add-to-calendar">
+                  <span class="calendar-button">Add to Calendar</span>
+                </div>
+              </a>
             `;
             eventList.appendChild(listItem);
           });
