@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:0Eubdu
+DTSTAMP:20240822T201322Z
+DTSTART:20240827T230000Z
+DTEND:20240828T030000Z
+DESCRIPTION:Join us for Flights and Flatbread at Whispering Vine’s Fourth Street location on Tuesday\, August 27\, from 4-8 pm! For $25 per person\, enjoy a delicious flatbread paired with a curated wine flight featuring the following Educated Guess wines:\n	•	Educated Guess Napa Cabernet Sauvignon 2021 – $24.99 (91 points\, Wine Enthusiast & 90 points\, James Suckling)\n	•	Educated Guess California Cabernet Sauvignon 2021 – $16.99\n	•	Roots Run Deep Educated Guess Merlot 2021 – $21.99 (93 points\, Wine Enthusiast)\n	•	Roots Run Deep Educated Guess Chardonnay 2022 – $19.99 (91 points\, Wine Enthusiast)\nIndulge in these fantastic wines paired with our savory flatbread. This is the perfect way to unwind on a summer evening!
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Flights and Flatbread
+END:VEVENT
+END:VCALENDAR
