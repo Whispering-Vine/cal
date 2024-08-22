@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:ZpVog8
+DTSTAMP:20240822T193724Z
+DTSTART:20240828T230000Z
+DTEND:20240829T020000Z
+DESCRIPTION:Join us for our weekly wine tasting at the Whispering Vine South Creek location on Wednesday\, August 28\, from 4-7 pm. For just $15 per person\, explore an exceptional lineup of Truchard Estate wines. Plus\, buy a bottle from the tasting and get the tasting free!\nFeatured wines include:\n	•	Truchard Estate Cabernet Sauvignon 2021 – $29.99 (92 points\, James Suckling & Wine Enthusiast)\n	•	Truchard Estate Zinfandel 2021 – $29.99\n	•	Truchard Estate Pinot Noir 2022 – $29.99 (93 points\, Wine Enthusiast)\n	•	Truchard Estate Merlot 2020 – $24.99\nDon’t miss out on this fantastic opportunity to discover these delicious wines!
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:🍇 Truchard Estate Wine Tasting
+END:VEVENT
+END:VCALENDAR
