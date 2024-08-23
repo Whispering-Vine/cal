@@ -115,41 +115,41 @@
       };
         
       // Function to display the list of events
-      const displayEvents = async () => {
-        try {
-          const response = await fetch('https://raw.githubusercontent.com/Whispering-Vine/cal/main/events.json');
-          if (!response.ok) throw new Error('Unable to fetch events');
-          const events = await response.json();
+const displayEvents = async () => {
+  try {
+    const response = await fetch('https://raw.githubusercontent.com/Whispering-Vine/cal/main/events.json');
+    if (!response.ok) throw new Error('Unable to fetch events');
+    const events = await response.json();
 
-          const currentDate = getCurrentDate();
-          
-          // Filter events to include only those starting from today onwards
-          const upcomingEvents = events.filter(event => new Date(event.startTime).toISOString().split('T')[0] >= currentDate);
-          
-          // Sort events by start time (nearest to farthest)
-          events.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
-          
-          const eventList = document.getElementById('event-list');
-          eventList.innerHTML = ''; // Clear any existing content
-          events.forEach(event => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `
-              <a href="https://cal.wvwine.co/${event.id}" style="text-decoration: none; color: inherit;">
-                <h2 class="event-title">${event.title}</h2>
-                <div class="event-date">${formatDate(event.startTime)}</div>
-                <div class="event-time">${formatTime(event.startTime)} - ${formatTime(event.endTime)}</div>
-                <div class="event-location">${event.location}</div>
-                <div class="add-to-calendar">
-                  <span class="calendar-button">Add to Calendar</span>
-                </div>
-              </a>
-            `;
-            eventList.appendChild(listItem);
-          });
-        } catch (error) {
-          console.error('Error displaying events:', error);
-        }
-      };
+    const now = new Date(); // Get the current date and time
+
+    // Filter events to include only those that haven't ended yet
+    const upcomingEvents = events.filter(event => new Date(event.endTime) > now);
+
+    // Sort events by start time (nearest to farthest)
+    upcomingEvents.sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
+
+    const eventList = document.getElementById('event-list');
+    eventList.innerHTML = ''; // Clear any existing content
+    upcomingEvents.forEach(event => {
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `
+        <a href="https://cal.wvwine.co/${event.id}" style="text-decoration: none; color: inherit;">
+          <h2 class="event-title">${event.title}</h2>
+          <div class="event-date">${formatDate(event.startTime)}</div>
+          <div class="event-time">${formatTime(event.startTime)} - ${formatTime(event.endTime)}</div>
+          <div class="event-location">${event.location}</div>
+          <div class="add-to-calendar">
+            <span class="calendar-button">Add to Calendar</span>
+          </div>
+        </a>
+      `;
+      eventList.appendChild(listItem);
+    });
+  } catch (error) {
+    console.error('Error displaying events:', error);
+  }
+};
       // Fetch and display events on page load
       document.addEventListener('DOMContentLoaded', displayEvents);
     </script>
