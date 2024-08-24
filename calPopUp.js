@@ -186,8 +186,8 @@ END:VCALENDAR`;
         }
 
         // Ensure the modal stays within the viewport
-        left = Math.max(10, Math.min(left, viewportWidth - modalRect.width - 10));
-        top = Math.max(10, Math.min(top, viewportHeight - modalRect.height - 10));
+       // left = Math.max(10, Math.min(left, viewportWidth - modalRect.width - 10));
+       // top = Math.max(10, Math.min(top, viewportHeight - modalRect.height - 10));
 
         // Set z-index based on the button
         const buttonZIndex = window.getComputedStyle(lastClickedButton).zIndex || 1;
