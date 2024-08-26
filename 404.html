@@ -186,6 +186,53 @@
             const date = new Date(dateTime);
             return date.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
         };
+
+        // Function to convert HTML to plain text
+        const htmlToPlainText = (html) => {
+            // Create a temporary DOM element to parse the HTML
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const body = doc.body;
+            
+            // Replace <br> with new lines
+            body.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+            
+            // Replace <p> with new lines before and after
+            body.querySelectorAll('p').forEach(p => p.replaceWith('\n' + p.textContent + '\n'));
+            
+            // Replace <ol> and <ul> with numeric and bullet lists
+            body.querySelectorAll('ol').forEach(ol => {
+                const items = Array.from(ol.querySelectorAll('li'))
+                    .map((li, index) => `${index + 1}. ${li.textContent}`)
+                    .join('\n');
+                ol.replaceWith('\n' + items + '\n');
+            });
+            
+            body.querySelectorAll('ul').forEach(ul => {
+                const items = Array.from(ul.querySelectorAll('li'))
+                    .map(li => `- ${li.textContent}`)
+                    .join('\n');
+                ul.replaceWith('\n' + items + '\n');
+            });
+            
+            // Replace <a> tags with text and URL in parentheses
+            body.querySelectorAll('a').forEach(a => {
+                const text = a.textContent;
+                const url = a.getAttribute('href');
+                a.replaceWith(`${text}: ${url}`);
+            });
+            
+            // Remove any remaining HTML tags and get the plain text
+            return body.textContent.trim().replace(/\n\s*\n/g, '\n\n');
+        };
+        
+        // Function to escape special characters for ICS
+        const escapeICSContent = (content) => {
+            return content
+                .replace(/[\n\r]+/g, '\\n')  // Replace new lines with \n
+                .replace(/\t/g, '\\t')        // Replace tabs with \t
+                .replace(/[,;]/g, '\\$&');    // Escape commas and semicolons
+        };
+
         // Function to generate ICS file content
         const generateICSFile = (event) => {
             const { title, description, location, startTime, endTime } = event;
@@ -195,8 +242,9 @@
             const formattedStartTime = formatDateTime(startTime);
             const formattedEndTime = formatDateTime(endTime);
             const formattedNow = formatDateTime(new Date().toISOString());
-            // Escape special characters and replace newlines for ICS format
-            const escapedDescription = description.replace(/[\n\r]+/g, '\\n').replace(/[,;]/g, '\\$&');
+            // Convert HTML to plain text and escape for ICS
+            const plainTextDescription = htmlToPlainText(description);
+            const cleanDescription = escapeICSContent(plainTextDescription);
             const escapedLocation = location.replace(/[,;]/g, '\\$&');
             return `BEGIN:VCALENDAR
 VERSION:2.0
@@ -206,7 +254,7 @@ UID:${uid}
 DTSTAMP:${formattedNow}
 DTSTART:${formattedStartTime}
 DTEND:${formattedEndTime}
-DESCRIPTION:${escapedDescription}
+DESCRIPTION:${cleanDescription}
 LOCATION:${escapedLocation}
 SUMMARY:${title}
 END:VEVENT
