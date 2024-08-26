@@ -3,7 +3,7 @@
     const style = document.createElement('style');
     style.textContent = `
         .wv-calendar-modal {
-            position: absolute;
+            position: fixed;
             display: none;
             background-color: #fff;
             border-radius: 10px;
@@ -143,55 +143,59 @@ END:VCALENDAR`;
     let isModalOpen = false;
 
     const positionModal = () => {
-    if (!lastClickedButton || !isModalOpen) return;
+        if (!lastClickedButton || !isModalOpen) return;
 
-    const buttonRect = lastClickedButton.getBoundingClientRect();
-    const modalRect = modal.getBoundingClientRect();
-    const viewportWidth = window.innerWidth;
+        const buttonRect = lastClickedButton.getBoundingClientRect();
+        const modalRect = modal.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        
+        let left, top;
 
-    let left = buttonRect.left + window.scrollX;
-    let top = buttonRect.top + window.scrollY - modalRect.height - 10; // Positioning above with a margin
+        // Determine horizontal position
+        if (viewportWidth - buttonRect.right >= modalRect.width) {
+            // Position to the right
+            left = buttonRect.left;
+        } else if (buttonRect.left >= modalRect.width) {
+            // Position to the left
+            left = buttonRect.right - modalRect.width;
+        } else {
+            // Center horizontally if no space on either side
+            left = (viewportWidth - modalRect.width) / 2;
+        }
 
-    // Ensure the modal doesn't go off the left or right of the screen
-    if (left + modalRect.width > viewportWidth) {
-        left = viewportWidth - modalRect.width - 10;
-    }
-    if (left < 10) {
-        left = 10;
-    }
+        // Determine vertical position
+        if (viewportHeight - buttonRect.bottom >= modalRect.height) {
+            // Position below the button
+            top = buttonRect.bottom;
+        } else if (buttonRect.top >= modalRect.height) {
+            // Position above the button
+            top = buttonRect.top - modalRect.height;
+        } else {
+            // Center vertically if no space above or below
+            top = (viewportHeight - modalRect.height) / 2;
+        }
 
-    // If modal goes off the top of the screen, position it below the button instead
-    if (top < 10) {
-        top = buttonRect.bottom + window.scrollY + 10;
-    }
+        // Adjust horizontal position based on vertical position
+        if (top === buttonRect.bottom) {
+            // If below the button
+            left = (left === buttonRect.left) ? buttonRect.left : buttonRect.right - modalRect.width;
+        } else if (top === buttonRect.top - modalRect.height) {
+            // If above the button
+            left = (left === buttonRect.left) ? buttonRect.left : buttonRect.right - modalRect.width;
+        }
 
-    modal.style.left = `${left}px`;
-    modal.style.top = `${top}px`;
-};
+        // Ensure the modal stays within the viewport
+       // left = Math.max(10, Math.min(left, viewportWidth - modalRect.width - 10));
+       // top = Math.max(10, Math.min(top, viewportHeight - modalRect.height - 10));
 
-const openModal = (button) => {
-    lastClickedButton = button;
+        // Set z-index based on the button
+        const buttonZIndex = window.getComputedStyle(lastClickedButton).zIndex || 1;
+        modal.style.zIndex = parseInt(buttonZIndex, 10) + 1;
 
-    // Make the modal visible but still transparent
-    modal.style.display = 'block';
-    modal.style.opacity = '0';
-
-    // Position the modal
-    positionModal();
-
-    // Fade in the modal
-    requestAnimationFrame(() => {
-        modal.style.opacity = '1';
-        modal.classList.add('wv-show');
-    });
-
-    isModalOpen = true;
-
-    // Start the timeout to close the modal after 5 seconds
-    closeModalTimeout = setTimeout(() => {
-        closeModal();
-    }, 5000);
-};
+        modal.style.left = `${left}px`;
+        modal.style.top = `${top}px`;
+    };
 
     const openModal = (button) => {
         lastClickedButton = button;
