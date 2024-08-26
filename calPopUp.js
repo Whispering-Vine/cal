@@ -307,7 +307,7 @@ END:VCALENDAR`;
     });
 
     window.addEventListener('wheel', updateModalPosition);  // For zoom events on desktop
-    window.addEventListener('touchmove', updateModalPosition);  // For mobile scrolling and pinch-zoom
+   // window.addEventListener('touchmove', updateModalPosition);  // For mobile scrolling and pinch-zoom
 
     // Use MutationObserver to detect changes in the DOM that might affect positioning
     const observer = new MutationObserver(updateModalPosition);
