@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:7BlbxD
+DTSTAMP:20240827T213801Z
+DTSTART:20240821T230000Z
+DTEND:20240822T020000Z
+DESCRIPTION:📅 August 21st\n🕕 4 - 7 PM\n🍷 Saxon Brown Winery\n📍Whispering Vine - Fourth St. \n💵 $20 per person\n👤 With Winemaker Jeff Gaffner (4:30 PM - 7 PM)
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Saxon Brown Tasting
+END:VEVENT
+END:VCALENDAR
