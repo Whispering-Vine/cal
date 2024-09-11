@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:fdTa4g
+DTSTAMP:20240911T185432Z
+DTSTART:20240925T003000Z
+DTEND:20240925T030000Z
+DESCRIPTION:Reserve your spot on Tock\n📅 September 24\, 2024 \n🕔 5:30 PM \n📍 Our Fourth St. Location \n💲 $95/person (tax & tip included) \n🎟️ Limited to 50 guests \n🍷 Enjoy a casual\, standing event with exceptional wines and passed small plates
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Sip & Savor
+END:VEVENT
+END:VCALENDAR
