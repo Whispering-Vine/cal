@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:CCoTzq
+DTSTAMP:20240911T171530Z
+DTSTART:20240917T230000Z
+DTEND:20240918T030000Z
+DESCRIPTION:Join us on September 17th from 4-8 PM for Flights & Flatbread\, featuring Joe Czesnakowiks\, Director of Sales at Dry Creek Vineyard. For just $25\, enjoy a delicious flatbread and a tasting of exceptional wines\, including:\n- The Mariner 2019: A 93-point dark-fruited red with a rich\, seamless finish.\n- Old Vine Zinfandel 2021: A 92-point wine with vibrant layers of black cherry and plum.\n- Heritage Vines Zinfandel 2021: Bold and hearty\, with raspberry and roasted anise notes.\n- Dry Chenin Blanc 2021: A refreshing 91-point white with aromas of honeydew and floral notes.\nExperience the legacy of one of California’s last family-owned wineries!
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Flights & Flatbread
+END:VEVENT
+END:VCALENDAR
