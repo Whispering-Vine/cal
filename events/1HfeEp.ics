@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:HIGCEY
+DTSTAMP:20240919T232852Z
+DTSTART:20240925T230000Z
+DTEND:20240926T020000Z
+DESCRIPTION:📅 September 25th\n🕕 4 - 7 PM\n🍷 Carol Shelton Wines\n📍Whispering Vine South Creek\n💵 $15 per person\nBuy any bottle from the tasting and the tasting fee will be refunded.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Carol Shelton Wine Tasting
+END:VEVENT
+END:VCALENDAR
