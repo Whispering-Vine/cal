@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:pmMDyi
+DTSTAMP:20241004T191804Z
+DTSTART:20241009T230000Z
+DTEND:20241010T020000Z
+DESCRIPTION:Join us at Whispering Vine South Creek on Wednesday\, October 9th\, from 4-7 PM for an exclusive tasting of our private label wines! For just $15\, enjoy a 3oz pour of the following featured wines:\n- Whispering Vine Cabernet 2020 – $19.99\n- Whispering Vine Chardonnay 2021 – $19.99\n- Whispering Vine Pinot Gris 2023 – $16.99\n- Whispering Vine Rosé 2022 – $16.99\nAs a special offer\, purchase any bottle and get your tasting for free! Don’t miss out on this perfect mid-week wine experience!
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Whispering Vine Tasting
+END:VEVENT
+END:VCALENDAR
