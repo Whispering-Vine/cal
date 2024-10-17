@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:jqH8js
+DTSTAMP:20241017T182834Z
+DTSTART:20241023T230000Z
+DTEND:20241024T020000Z
+DESCRIPTION:Join us for a special Wine Tasting this Wednesday\, October 23rd\, from 4-7 PM at Whispering Vine South Creek! For just $30\, you’ll enjoy a selection of exceptional wines from DeLille Cellars. Plus\, buy any wine from the tasting\, and your tasting fee is waived!\nFeatured Wines:\n\t•\tDeLille D2 Estate Red 2021 – $39.99 (Winery $55)\n93 points\, Wine Spectator: A dynamic blend of Merlot\, Cabernet Sauvignon\, and more\, offering red currant\, blackberry\, clove\, and cigar box notes.\n\t•\tDeLille Métier Cabernet Sauvignon 2021 – $29.99\n91 points\, Wine Spectator: A smooth Cabernet with black cherry\, plum\, and baking spice. Wine Spectator Top 100 #66.\n\t•\tDeLille Métier Red Blend 2021 – $24.99\n91 points\, Wine Spectator: Black raspberry\, plum\, and smoky spice in this bold Syrah-Cabernet-Merlot blend.\n\t•\tDeLille Sauvignon Blanc Columbia Valley Métier 2023 – $19.99\nA vibrant Sauvignon Blanc with notes of citrus\, pineapple\, and a lively finish.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:DeLille Cellars Tasting
+END:VEVENT
+END:VCALENDAR
