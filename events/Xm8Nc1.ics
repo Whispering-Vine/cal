@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:FZLfSs
+DTSTAMP:20241024T193247Z
+DTSTART:20241030T230000Z
+DTEND:20241031T020000Z
+DESCRIPTION:Join us for our weekly wine tasting this Wednesday\, October 30th\, from 4-7 PM at Whispering Vine’s South Creek location! For $25\, enjoy a 3oz tasting of four exceptional wines from Opolo Vineyards:\n- Opolo Cabernet Sauvignon 2019 – $29.99 (93 Tasting Panel)\n- Opolo Cabernet Sauvignon Summit Creek 2021 – $19.99 (92 Vinous)\n- Opolo Summit Creek Zinfandel 2022 – $19.99\n- Opolo Summit Creek Merlot 2021 – $19.99\nAs a bonus\, purchase any bottle from the tasting and your tasting is free! Come savor these standout wines and explore the bold flavors of Paso Robles!
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Opolo Tasting
+END:VEVENT
+END:VCALENDAR
