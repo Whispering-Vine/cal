@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:8DMtUw
+DTSTAMP:20241101T181225Z
+DTSTART:20241107T000000Z
+DTEND:20241107T030000Z
+DESCRIPTION:Join us on November 6th from 4-7 PM at Whispering Vine’s South Creek location for a special Kermit Lynch tasting! For just $30\, savor a 3oz pour of four curated reds:\n- Catherine & Pierre Breton 2016 – $49.99\n- Megaphone Rouge 2021 – $19.99\n- Clos La Coutale Cahors 2021 – $19.99\n- Kermit Lynch Côtes du Rhône 2021 – $17.99\nBuy any bottle from the tasting\, and your tasting is free! Come experience these exceptional French wines with us!
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Kermit Lynch Reds
+END:VEVENT
+END:VCALENDAR
