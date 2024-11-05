@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     margin-top: 0;
                     margin-bottom: 15px;
                     font-size: 18px;
-                    font-weight: 800px;
+                    font-weight: 800px; !important
                 }
         
                 /* Mobile-specific styling */
