@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     opacity: 1;
                 }
                 .wv-calendar-modal * {
-                    font-family: Arial, sans-serif;
+                    
                 }
                 .wv-calendar-close {
                     position: absolute;
@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     margin-top: 0;
                     margin-bottom: 15px;
                     font-size: 18px;
+                    font-weight: 800px;
                 }
         
                 /* Mobile-specific styling */
