@@ -10,8 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     width: 100vw;
                     height: 100vh;
                     background-color: rgba(0, 0, 0, 0.5);
-                    backdrop-filter: blur(10px);
-                    -webkit-backdrop-filter: blur(10px);
                     z-index: 9; /* Should be less than modal's z-index */
                     display: none;
                 }
