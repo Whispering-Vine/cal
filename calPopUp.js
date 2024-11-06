@@ -239,9 +239,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (buttonRect.right + modalRect.width <= viewportWidth) {
                     // Position modal's top right corner to button's bottom right corner
                     left = buttonRect.right - modalRect.width;
-                } else if (buttonRect.left >= modalRect.width) {
-                    // Not enough space on the right, align to button's bottom left corner
-                    left = buttonRect.left;
                 } else {
                     // Center horizontally if no space on either side
                     left = Math.max((viewportWidth - modalRect.width) / 2, 10);
