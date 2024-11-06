@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         transition: transform 0.3s ease, opacity 0.3s ease;
                         transform: translateY(100%);
                         overflow-y: auto; /* In case content overflows */
-                        z-index: 10;
+                        z-index: 999;
                         box-sizing: border-box;
                     }
                     .wv-calendar-modal.wv-show {
