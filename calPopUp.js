@@ -2,90 +2,99 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create and append styles
             const style = document.createElement('style');
             style.textContent = `
-                /* Styles for the blur background */
-                .wv-blur-background {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100vw;
-                    height: 100vh;
-                    background-color: rgba(0, 0, 0, 0.5);
-                    z-index: 9; /* Should be less than modal's z-index */
-                    display: none;
-                }
-                .wv-blur-background.wv-show {
-                    display: block;
-                }
-        
-                .wv-calendar-modal {
-                    position: fixed;
-                    display: none;
-                    background-color: #fff;
-                    border-radius: 10px;
-                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-                    padding: 20px;
-                    width: 300px;
-                    opacity: 0;
-                    transition: opacity 0.3s ease;
-                    z-index: 10;
-                    box-sizing: border-box;
-                }
-                .wv-calendar-modal.wv-show {
-                    display: block;
-                    opacity: 1;
-                }
-                .wv-calendar-modal * {
-                    
-                }
-                .wv-calendar-close {
-                    position: absolute;
-                    right: 10px;
-                    top: 10px;
-                    color: #aaa;
-                    font-size: 20px;
-                    font-weight: bold;
-                    cursor: pointer;
-                }
-                .wv-calendar-close:hover,
-                .wv-calendar-close:focus {
-                    color: #333;
-                }
-                .wv-calendar-buttons {
-                    display: grid;
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 10px;
-                    margin-top: 15px;
-                }
-                .wv-calendar-button {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 10px;
-                    border: 1px solid #ccc;
-                    border-radius: 5px;
-                    text-decoration: none;
-                    color: #333;
-                    font-weight: bold;
-                    cursor: pointer;
-                    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-                }
-                .wv-calendar-button i {
-                    margin-right: 5px;
-                }
-                .wv-calendar-button:hover {
-                    background-color: #f0f0f0;
-                    color: #f55555;
-                    transform: scale(1.05);
-                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                }
-                .wv-calendar-modal h2 {
-                    color: #333;
-                    margin-top: 0;
-                    margin-bottom: 15px;
-                    font-size: 18px;
-                    font-weight: 800px; !important
-                }
-        
+            /* Styles for the blur background */
+            .wv-blur-background {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.5);
+                backdrop-filter: blur(10px); /* Subtle blur for the background */
+                -webkit-backdrop-filter: blur(10px);
+                z-index: 9; /* Should be less than modal's z-index */
+                display: none;
+            }
+            .wv-blur-background.wv-show {
+                display: block;
+            }
+
+            .wv-calendar-modal {
+                position: fixed;
+                display: none;
+                background-color: rgba(30, 30, 30, 0.85); /* Semi-transparent dark background */
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                padding: 20px;
+                width: 300px;
+                opacity: 0;
+                backdrop-filter: blur(20px); /* iOS-style background blur */
+                -webkit-backdrop-filter: blur(20px);
+                transition: opacity 0.3s ease;
+                z-index: 10;
+                box-sizing: border-box;
+            }
+            .wv-calendar-modal.wv-show {
+                display: block;
+                opacity: 1;
+            }
+            .wv-calendar-modal * {
+                    font-family: sans-serif;
+            }
+            /* Close button */
+            .wv-calendar-close {
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                color: #bbb; /* Light grey for visibility on dark background */
+                font-size: 20px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            .wv-calendar-close:hover,
+            .wv-calendar-close:focus {
+                color: #fff;
+            }
+
+            /* Button styling */
+            .wv-calendar-buttons {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+                margin-top: 15px;
+            }
+            .wv-calendar-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                border: 1px solid #555; /* Dark border for subtle contrast */
+                border-radius: 5px;
+                text-decoration: none;
+                color: #ddd; /* Light text color */
+                font-weight: bold;
+                cursor: pointer;
+                transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            }
+            .wv-calendar-button i {
+                margin-right: 5px;
+            }
+            .wv-calendar-button:hover {
+                background-color: rgba(70, 70, 70, 0.5); /* Slightly lighter background on hover */
+                color: #f55555; /* Accent color for hover effect */
+                transform: scale(1.05);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            }
+
+            /* Heading styling */
+            .wv-calendar-modal h2 {
+                color: #ddd;
+                margin-top: 0;
+                margin-bottom: 15px;
+                font-size: 18px;
+                font-weight: bold;
+            }
+                
                 /* Mobile-specific styling */
                 @media (max-width: 768px) {
                     .wv-calendar-modal {
@@ -225,35 +234,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 const viewportHeight = window.innerHeight;
         
                 let left, top;
-        
+
                 // Determine horizontal position
-                if (buttonRect.left + modalRect.width <= viewportWidth) {
-                    left = buttonRect.left;
-                } else if (viewportWidth - buttonRect.right >= modalRect.width) {
+                if (buttonRect.right + modalRect.width <= viewportWidth) {
+                    // Position modal's top right corner to button's bottom right corner
                     left = buttonRect.right - modalRect.width;
                 } else if (buttonRect.left >= modalRect.width) {
-                    left = buttonRect.left - modalRect.width;
+                    // Not enough space on the right, align to button's bottom left corner
+                    left = buttonRect.left;
                 } else {
+                    // Center horizontally if no space on either side
                     left = Math.max((viewportWidth - modalRect.width) / 2, 10);
                 }
-        
+
                 // Determine vertical position
                 if (buttonRect.bottom + modalRect.height <= viewportHeight) {
+                    // Position below the button
                     top = buttonRect.bottom;
                 } else if (buttonRect.top >= modalRect.height) {
+                    // Not enough space below, position above the button
                     top = buttonRect.top - modalRect.height;
                 } else {
+                    // Center vertically if no space above or below
                     top = Math.max((viewportHeight - modalRect.height) / 2, 10);
                 }
-        
+
                 // Ensure the modal stays within the viewport
                 left = Math.max(10, Math.min(left, viewportWidth - modalRect.width - 10));
                 top = Math.max(10, Math.min(top, viewportHeight - modalRect.height - 10));
-        
+
                 // Set z-index based on the button
                 const buttonZIndex = window.getComputedStyle(lastClickedButton).zIndex || 1;
                 modal.style.zIndex = parseInt(buttonZIndex, 10) + 1;
-        
+
+                // Apply calculated position
                 modal.style.left = `${left}px`;
                 modal.style.top = `${top}px`;
             };
