@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 width: 100vw;
                 height: 100vh;
                 background-color: rgba(0, 0, 0, 0.5);
-                backdrop-filter: blur(10px); /* Subtle blur for the background */
-                -webkit-backdrop-filter: blur(10px);
+                backdrop-filter: blur(1px); /* Subtle blur for the background */
+                -webkit-backdrop-filter: blur(1px);
                 z-index: 9; /* Should be less than modal's z-index */
                 display: none;
             }
@@ -22,14 +22,14 @@ document.addEventListener('DOMContentLoaded', function() {
             .wv-calendar-modal {
                 position: fixed;
                 display: none;
-                background-color: rgba(30, 30, 30, 0.85); /* Semi-transparent dark background */
+                background-color: rgba(30, 30, 30, 0.5); /* Semi-transparent dark background */
                 border-radius: 12px;
                 box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
                 padding: 20px;
                 width: 300px;
                 opacity: 0;
-                backdrop-filter: blur(20px); /* iOS-style background blur */
-                -webkit-backdrop-filter: blur(20px);
+                backdrop-filter: blur(50px); /* iOS-style background blur */
+                -webkit-backdrop-filter: blur(50px);
                 transition: opacity 0.3s ease;
                 z-index: 10;
                 box-sizing: border-box;
