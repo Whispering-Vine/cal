@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Determine horizontal position
                 if (buttonRect.right + modalRect.width <= viewportWidth) {
                     // Position modal's top right corner to button's bottom right corner
-                    left = buttonRect.left;
+                    left = buttonRect.right - modalRect.width;
                 } else if (buttonRect.left >= modalRect.width) {
                     // Not enough space on the right, align to button's bottom left corner
                     left = buttonRect.right - modalRect.width;
@@ -250,10 +250,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Determine vertical position
                 if (buttonRect.bottom + modalRect.height <= viewportHeight) {
                     // Position below the button
-                    top = buttonRect.bottom;
+                    top = buttonRect.bottom + 10;
                 } else if (buttonRect.top >= modalRect.height) {
                     // Not enough space below, position above the button
-                    top = buttonRect.top - modalRect.height;
+                    top = buttonRect.top - modalRect.height - 10;
                 } else {
                     // Center vertically if no space above or below
                     top = Math.max((viewportHeight - modalRect.height) / 2, 10);
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Ensure the modal stays within the viewport
                 left = Math.max(10, Math.min(left, viewportWidth - modalRect.width - 10));
-                top = Math.max(10, Math.min(top, viewportHeight - modalRect.height - 10)) + 10;
+                top = Math.max(10, Math.min(top, viewportHeight - modalRect.height - 10));
 
                 // Set z-index based on the button
                 const buttonZIndex = window.getComputedStyle(lastClickedButton).zIndex || 1;
