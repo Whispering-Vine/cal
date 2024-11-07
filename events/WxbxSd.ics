@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:BlZmWx
+DTSTAMP:20241107T230649Z
+DTSTART:20241114T000000Z
+DTEND:20241114T030000Z
+DESCRIPTION:Join us for a Pinot Noir Tasting on November 13 from 4-7 PM at Whispering Vine SouthCreek for just $30! Buy any bottle from the tasting\, and enjoy the tasting for free.\nWines featured:\n- Martinelli Bella Vigna Pinot Noir 2022 - $45.99\n- EnRoute Winery Les Pommiers Pinot Noir 2022 - Sale $41.99 (Winery $60)\n- Black Kite Cellars Pinot Noir Kite’s Rest Anderson Valley - $39.99 (Winery $54)\n- Admire by Dan Kosta of Kosta Brown Pinot Noir Sonoma Coast - $31.99\nDon’t miss this exclusive opportunity to taste these exceptional wines!
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Pinot Noir Tasting
+END:VEVENT
+END:VCALENDAR
