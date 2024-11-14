@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:wBLPpd
+DTSTAMP:20241114T182935Z
+DTSTART:20241121T000000Z
+DTEND:20241121T030000Z
+DESCRIPTION:Join us at Whispering Vine Wine Co. South Creek for an Oregon Thanksgiving Pinot Noir Tasting on Wednesday\, November 20th\, from 4-7 PM! For just $25\, experience a curated selection of Oregon’s top Pinot Noirs. Celebrate the season with these exceptional wines:\nFeatured Wines:\n- Argyle Estate Reserve Pinot Noir 2022 – $32.99\n- Purple Hands Lone Oak Pinot Noir 2022 – $29.99\n- Four Graces Pinot Noir 2021 – $26.99\n- Hyland Estates Old Vine Estate Pinot Noir 2022 – $26.99\nDon’t miss this chance to savor the flavors of Oregon’s finest!
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Oregon Thanksgiving Pinot Noir Tasting
+END:VEVENT
+END:VCALENDAR
