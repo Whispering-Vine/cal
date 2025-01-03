@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:Ux5TWD
+DTSTAMP:20250103T192204Z
+DTSTART:20250109T000000Z
+DTEND:20250109T030000Z
+DESCRIPTION:Experience a premium tasting featuring four exceptional wines from the Far Niente family for $40 per person. Plus\, purchase a bottle from the tasting\, and your tasting is free!\n- Bella Union Cabernet Sauvignon 2019 – Rich\, complex\, 92 points (Wine Spectator & Wine Enthusiast)\n- Far Niente Chardonnay 2022 – Bright\, vibrant\, citrus and floral notes\n- Post & Beam Cabernet Sauvignon 2022 – Bold\, plush\, 95 points (Tasting Panel)\n- EnRoute Les Pommiers Pinot Noir 2022 – Silky\, elegant\, red berry flavors\nDon’t miss this incredible opportunity to taste and take home world-class wines!
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Far Niente Tasting
+END:VEVENT
+END:VCALENDAR
