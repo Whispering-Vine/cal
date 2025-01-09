@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:mACjVT
+DTSTAMP:20250109T223748Z
+DTSTART:20250116T000000Z
+DTEND:20250116T030000Z
+DESCRIPTION:Join us on Wednesday\, January 15th\, from 4PM to 7PM at Whispering Vine South Creek for an exclusive Duckhorn Tasting! For $35 per person\, experience a selection of premium Duckhorn wines listed below. Plus\, buy any bottle from the tasting and get your tasting FREE. Don’t miss this opportunity to savor exceptional wines crafted by one of Napa’s finest producers.\nFeatured Wines:\n- Duckhorn Napa Valley Cabernet Sauvignon 2021 – Sale $52.99 (Winery $80)\n- Duckhorn Napa Valley Merlot 2021 – $49.99 (Winery $60)\n- Goldeneye Anderson Valley Pinot Noir 2021 – Sale $49.99 (Winery $62)\n- Duckhorn Napa Valley Chardonnay 2022 – $29.99 (Winery $38)
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Duckhorn Portfolio Tasting
+END:VEVENT
+END:VCALENDAR
