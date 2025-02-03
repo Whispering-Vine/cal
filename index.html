@@ -128,7 +128,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // Function to display the list of events
 const displayEvents = async () => {
   try {
-    const response = await fetch('https://raw.githubusercontent.com/Whispering-Vine/cal/main/events.json');
+    const response = await fetch('https://cal.wvwine.co/events.json');
     if (!response.ok) throw new Error('Unable to fetch events');
     const events = await response.json();
 
