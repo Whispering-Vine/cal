@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:5ynvjG
+DTSTAMP:20250203T094814Z
+DTSTART:20250130T000000Z
+DTEND:20250130T030000Z
+DESCRIPTION:Join us on January 29th\, from 4-7 PM at our South Creek location for a tasting featuring Trefethen wines! For just $30\, explore a selection of exceptional wines\, including:\n- Trefethen Cabernet Sauvignon 2021 ($49.99\, Winery $75)\n- Trefethen Merlot 2021 ($39.99)\n- Trefethen Estate Chardonnay 2022 ($26.99\, Winery $40)\n- Trefethen Eshcol Red 2020 ($24.99)\nBonus: Purchase any bottle from the tasting\, and we’ll refund your tasting fee!
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Trefethen Tasting
+END:VEVENT
+END:VCALENDAR
