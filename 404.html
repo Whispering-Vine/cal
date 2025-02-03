@@ -274,7 +274,7 @@ END:VCALENDAR`;
         // Function to fetch event data from GitHub
         const fetchEventData = async (eventId) => {
             try {
-                const response = await fetch(`https://raw.githubusercontent.com/Whispering-Vine/cal/main/events/${eventId}.json`);
+                const response = await fetch(`https://cal.wvwine.co/events/${eventId}.json`);
                 if (!response.ok) throw new Error('Event not found');
                 return await response.json();
             } catch (error) {
