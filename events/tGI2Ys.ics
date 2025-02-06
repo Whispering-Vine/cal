@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:h8r4Sb
+DTSTAMP:20250206T233750Z
+DTSTART:20250213T000000Z
+DTEND:20250213T030000Z
+DESCRIPTION:Join us on Wednesday\, February 12\, from 4–7 PM at Whispering Vine South Creek for an exclusive tasting of The Prisoner Wine Company’s bold and expressive wines. Experience the rich flavors of:\n- The Prisoner Red Blend ($39.99)\n- Saldo Zinfandel ($23.99)\n- Saldo Shiraz ($24.99)\n- Blindfold Sauvignon Blanc ($24.99)\nTasting Fee: $20 – But it’s waived with the purchase of any bottle from the tasting!\nDon’t miss this opportunity to savor some of The Prisoner’s most sought-after wines at special pricing. No reservations required—just stop by and enjoy!
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:The Prisoner Wine Company Tasting
+END:VEVENT
+END:VCALENDAR
