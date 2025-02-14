@@ -188,9 +188,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
     <script>
-
-        const TIME_ZONE = "America/Los_Angeles";
-
         // Function to generate unique UID for the event
         const generateUID = () => {
             return [...Array(32)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
@@ -198,14 +195,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // Function to format date and time in the required format
         const formatDateTime = (dateTime) => {
             const date = new Date(dateTime);
-        
-            // Convert to Los Angeles time zone
-            const losAngelesDate = new Date(
-                date.toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
-            );
-        
-            // Format it exactly like your original function
-            return losAngelesDate.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
+            return date.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
         };
 
         // Function to convert HTML to plain text
