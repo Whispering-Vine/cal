@@ -1,264 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event</title>
-    <link rel="icon" href="favicon.png" type="image/png"> <!-- Favicon link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-T57JWWVK');</script>
-<!-- End Google Tag Manager -->
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            margin-top: 55px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            max-width: 600px;
-            width: 100%;
-            position: relative;
-        }
-        .back-button {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: #9c9c9c;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.3s;
-        }
-        .back-button:hover {
-            background: #000000;
-            color: #fff;
-            transform: scale(1.05);
-        }
-        .back-button i {
-            margin-right: 8px;
-        }
-        h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-        .event-date {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .calendar-icon {
-            background-color: #000;
-            color: #fff;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            margin-right: 15px;
-            border-radius: 5px;
-        }
-        .calendar-icon .day {
-            font-size: 24px;
-        }
-        .event-info {
-            font-size: 18px;
-        }
-        .event-location, .event-details, .event-price {
-            margin-top: 20px;
-            font-style: italic;
-            font-size: 16px;
-        }
-        .event-note {
-            margin-top: 20px;
-            white-space: pre-line;
-            overflow-wrap: break-word;
-        }
-        .add-to-calendar {
-            margin-top: 30px;
-        }
-        .add-to-calendar h2 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        .calendar-buttons {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .calendar-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-        }
-        .calendar-button i {
-            margin-right: 5px;
-            margin-bottom: 2px;
-        }
-        .calendar-button:hover {
-            background-color: #f0f0f0;
-            color: #f55555;
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .timezone {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #f0f0f0;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 12px;
-        }
-        .not-found {
-            text-align: center;
-            margin-top: 50px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T57JWWVK');
+  </script>
+  <!-- End Google Tag Manager -->
+  <style>
+    /* Existing styles for event details */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      margin-top: 55px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      max-width: 600px;
+      width: 100%;
+      position: relative;
+    }
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #9c9c9c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .back-button:hover {
+      background: #000000;
+      color: #fff;
+      transform: scale(1.05);
+    }
+    .back-button i {
+      margin-right: 8px;
+    }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .event-date {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .calendar-icon {
+      background-color: #000;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      margin-right: 15px;
+      border-radius: 5px;
+    }
+    .calendar-icon .day {
+      font-size: 24px;
+    }
+    .event-info {
+      font-size: 18px;
+    }
+    .event-location, .event-details, .event-price {
+      margin-top: 20px;
+      font-style: italic;
+      font-size: 16px;
+    }
+    .event-note {
+      margin-top: 20px;
+      white-space: pre-line;
+      overflow-wrap: break-word;
+    }
+    .add-to-calendar {
+      margin-top: 30px;
+    }
+    .add-to-calendar h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    .calendar-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .calendar-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .calendar-button i {
+      margin-right: 5px;
+      margin-bottom: 2px;
+    }
+    .calendar-button:hover {
+      background-color: #f0f0f0;
+      color: #f55555;
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .timezone {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #f0f0f0;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+    }
+    .not-found {
+      text-align: center;
+      margin-top: 50px;
+    }
+    
+    /* New RSVP form styles */
+    .rsvp-container {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 100%;
+      text-align: left;
+      margin-top: 30px;
+    }
+    .rsvp-container h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      font-weight: bold;
+      color: black;
+    }
+    .rsvp-label {
+      font-weight: bold;
+      display: block;
+      margin: 10px 0 5px;
+    }
+    .rsvp-container input,
+    .rsvp-container select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      transition: border-color 0.3s;
+    }
+    .rsvp-container input.error {
+      border-color: #F44336;
+      background-color: #ffebee;
+    }
+    .attendance-options {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .attendance-options label {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+    .attendance-options input {
+      display: none;
+    }
+    /* Change background when selected */
+    .attendance-options input:checked + label {
+      color: white;
+    }
+    .attendance-options input#attend-yes:checked + label {
+      background-color: #4CAF50;
+      border-color: #4CAF50;
+    }
+    .attendance-options input#attend-maybe:checked + label {
+      background-color: #FFC107;
+      border-color: #FFC107;
+      color: black;
+    }
+    .attendance-options input#attend-no:checked + label {
+      background-color: #F44336;
+      border-color: #F44336;
+    }
+    .register-button {
+      width: 100%;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 12px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .register-button:hover {
+      background: #333;
+    }
+    .limited-seats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #d95a2b;
+      font-weight: bold;
+    }
+    .limited-seats i {
+      margin-right: 5px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T57JWWVK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <div class="container">
-        <a href="https://cal.wvwine.co" class="back-button"><i class="fas fa-arrow-left"></i>Events</a>
-        <div class="timezone">UTC -8 America/Los_Angeles</div>
-        <div class="not-found" id="not-found" style="display: none;">
-            <h1>404 - Event Not Found</h1>
-            <p>The event you are looking for does not exist or has been moved.</p>
-        </div>
-        <div id="event-details">
-            <h1 id="event-title"></h1>
-            <div class="event-date">
-                <div class="calendar-icon">
-                    <div class="day" id="event-day"></div>
-                    <div id="event-month"></div>
-                </div>
-                <div class="event-info">
-                    <div id="event-day-name"></div>
-                    <div id="event-full-date"></div>
-                    <div id="event-time"></div>
-                </div>
-            </div>
-            <div class="event-location" id="event-location">
-                <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <div class="event-note" id="event-description">
-                
-            </div>
-            <div class="add-to-calendar">
-                <h2>Add to Calendar</h2>
-                <div class="calendar-buttons">
-                    <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
-                    <a href="#" class="calendar-button" id="apple-link" onclick="redirectToAppleCalendar(event)"><i class="fab fa-apple"></i> Apple</a>
-                    <a href="#" class="calendar-button" id="outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
-                    <a href="#" class="calendar-button" id="yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
-                    <a href="#" class="calendar-button" id="office365-link"><i class="fab fa-microsoft"></i> Office365</a>
-                    <a href="#" class="calendar-button" id="ics-link"><i class="fas fa-calendar-alt"></i> ICS File</a>
-                </div>
-            </div>
-        </div>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T57JWWVK"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <div class="container">
+    <a href="https://cal.wvwine.co" class="back-button"><i class="fas fa-arrow-left"></i>Events</a>
+    <div class="timezone">UTC -8 America/Los_Angeles</div>
+    <div class="not-found" id="not-found" style="display: none;">
+      <h1>404 - Event Not Found</h1>
+      <p>The event you are looking for does not exist or has been moved.</p>
     </div>
-    <script>
-        // Function to generate unique UID for the event
-        const generateUID = () => {
-            return [...Array(32)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
-        };
-        // Function to format date and time in the required format
-        const formatDateTime = (dateTime) => {
-            const date = new Date(dateTime);
-            return date.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
-        };
+    <div id="event-details">
+      <h1 id="event-title"></h1>
+      <div class="event-date">
+        <div class="calendar-icon">
+          <div class="day" id="event-day"></div>
+          <div id="event-month"></div>
+        </div>
+        <div class="event-info">
+          <div id="event-day-name"></div>
+          <div id="event-full-date"></div>
+          <div id="event-time"></div>
+        </div>
+      </div>
+      <div class="event-location" id="event-location">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+      <div class="event-note" id="event-description">
+      </div>
+      <div class="add-to-calendar">
+        <h2>Add to Calendar</h2>
+        <div class="calendar-buttons">
+          <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
+          <a href="#" class="calendar-button" id="apple-link" onclick="redirectToAppleCalendar(event)"><i class="fab fa-apple"></i> Apple</a>
+          <a href="#" class="calendar-button" id="outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
+          <a href="#" class="calendar-button" id="yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
+          <a href="#" class="calendar-button" id="office365-link"><i class="fab fa-microsoft"></i> Office365</a>
+          <a href="#" class="calendar-button" id="ics-link"><i class="fas fa-calendar-alt"></i> ICS File</a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- RSVP Form Integrated Below -->
+    <div class="rsvp-container" id="rsvp-container">
+      <div class="limited-seats">
+        <h2>RSVP Here</h2>
+        <div><i class="fas fa-users"></i> Limited seats</div>
+      </div>
+      <p><strong>Are you attending this event?</strong></p>
+      <div class="attendance-options">
+        <input type="radio" id="attend-yes" name="attendance" value="yes" checked>
+        <label for="attend-yes">Yes</label>
+        <input type="radio" id="attend-maybe" name="attendance" value="maybe">
+        <label for="attend-maybe">Maybe</label>
+        <input type="radio" id="attend-no" name="attendance" value="no">
+        <label for="attend-no">No</label>
+      </div>
+      <label class="rsvp-label" for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Enter your name">
+      <label class="rsvp-label" for="email">Email</label>
+      <input type="email" id="email" placeholder="Enter your email">
+      <button class="register-button" type="submit">Register</button>
+    </div>
+    <!-- End of RSVP Form -->
+    
+  </div>
+  <script>
+    // Existing script for event details and calendar functionality
 
-        // Function to convert HTML to plain text
-        const htmlToPlainText = (html) => {
-            // Create a temporary DOM element to parse the HTML
-            const doc = new DOMParser().parseFromString(html, 'text/html');
-            const body = doc.body;
-            
-            // Replace <br> with new lines
-            body.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
-            
-            // Replace <p> with new lines before and after
-            body.querySelectorAll('p').forEach(p => p.replaceWith('\n' + p.textContent + '\n'));
-            
-            // Replace <ol> and <ul> with numeric and bullet lists
-            body.querySelectorAll('ol').forEach(ol => {
-                const items = Array.from(ol.querySelectorAll('li'))
-                    .map((li, index) => `${index + 1}. ${li.textContent}`)
-                    .join('\n');
-                ol.replaceWith('\n' + items + '\n');
-            });
-            
-            body.querySelectorAll('ul').forEach(ul => {
-                const items = Array.from(ul.querySelectorAll('li'))
-                    .map(li => `- ${li.textContent}`)
-                    .join('\n');
-                ul.replaceWith('\n' + items + '\n');
-            });
-            
-            // Replace <a> tags with text and URL in parentheses
-            body.querySelectorAll('a').forEach(a => {
-                const text = a.textContent;
-                const url = a.getAttribute('href');
-                a.replaceWith(`${text}: ${url}`);
-            });
-            
-            // Remove any remaining HTML tags and get the plain text
-            return body.textContent.trim().replace(/\n\s*\n/g, '\n\n');
-        };
-        
-        // Function to escape special characters for ICS
-        const escapeICSContent = (content) => {
-            return content
-                .replace(/[\n\r]+/g, '\\n')  // Replace new lines with \n
-                .replace(/\t/g, '\\t')        // Replace tabs with \t
-                .replace(/[,;]/g, '\\$&');    // Escape commas and semicolons
-        };
+    // Function to generate unique UID for the event
+    const generateUID = () => {
+      return [...Array(32)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+    };
+    // Function to format date and time in the required format
+    const formatDateTime = (dateTime) => {
+      const date = new Date(dateTime);
+      return date.toISOString().replace(/[-:]/g, '').slice(0, -5) + 'Z';
+    };
 
-        // Function to generate ICS file content
-        const generateICSFile = (event) => {
-            const { title, description, location, startTime, endTime } = event;
-            // Generate unique UID
-            const uid = generateUID();
-            // Format start and end times
-            const formattedStartTime = formatDateTime(startTime);
-            const formattedEndTime = formatDateTime(endTime);
-            const formattedNow = formatDateTime(new Date().toISOString());
-            // Convert HTML to plain text and escape for ICS
-            const plainTextDescription = htmlToPlainText(description);
-            const cleanDescription = escapeICSContent(plainTextDescription);
-            const escapedLocation = location.replace(/[,;]/g, '\\$&');
-            return `BEGIN:VCALENDAR
+    // Function to convert HTML to plain text
+    const htmlToPlainText = (html) => {
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const body = doc.body;
+      body.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+      body.querySelectorAll('p').forEach(p => p.replaceWith('\n' + p.textContent + '\n'));
+      body.querySelectorAll('ol').forEach(ol => {
+        const items = Array.from(ol.querySelectorAll('li'))
+          .map((li, index) => `${index + 1}. ${li.textContent}`)
+          .join('\n');
+        ol.replaceWith('\n' + items + '\n');
+      });
+      body.querySelectorAll('ul').forEach(ul => {
+        const items = Array.from(ul.querySelectorAll('li'))
+          .map(li => `- ${li.textContent}`)
+          .join('\n');
+        ul.replaceWith('\n' + items + '\n');
+      });
+      body.querySelectorAll('a').forEach(a => {
+        const text = a.textContent;
+        const url = a.getAttribute('href');
+        a.replaceWith(`${text}: ${url}`);
+      });
+      return body.textContent.trim().replace(/\n\s*\n/g, '\n\n');
+    };
+    
+    // Function to escape special characters for ICS
+    const escapeICSContent = (content) => {
+      return content
+        .replace(/[\n\r]+/g, '\\n')
+        .replace(/\t/g, '\\t')
+        .replace(/[,;]/g, '\\$&');
+    };
+
+    // Function to generate ICS file content
+    const generateICSFile = (event) => {
+      const { title, description, location, startTime, endTime } = event;
+      const uid = generateUID();
+      const formattedStartTime = formatDateTime(startTime);
+      const formattedEndTime = formatDateTime(endTime);
+      const formattedNow = formatDateTime(new Date().toISOString());
+      const plainTextDescription = htmlToPlainText(description);
+      const cleanDescription = escapeICSContent(plainTextDescription);
+      const escapedLocation = location.replace(/[,;]/g, '\\$&');
+      return `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:Whispering Vine
 BEGIN:VEVENT
@@ -271,139 +388,160 @@ LOCATION:${escapedLocation}
 SUMMARY:${title}
 END:VEVENT
 END:VCALENDAR`;
-        };
-        // Function to fetch event data from GitHub
-        const fetchEventData = async (eventId) => {
-            try {
-                const response = await fetch(`https://cal.wvwine.co/events/${eventId}.json`);
-                if (!response.ok) throw new Error('Event not found');
-                return await response.json();
-            } catch (error) {
-                console.error('Error fetching event data:', error);
-                return null;
-            }
-        };
-        // Function to generate calendar URLs
-        const generateCalendarUrls = (event) => {
-            const { title, description, location, startTime, endTime } = event;
-            const formattedTitle = encodeURIComponent(title);
-            const formattedDescription = encodeURIComponent(description);
-            const formattedLocation = encodeURIComponent(location);
+    };
 
-            // Convert times to the appropriate formats
-            const formatGoogleDate = (dateTime) => {
-                const date = new Date(dateTime);
-                const isoString = date.toISOString();
-                return isoString.replace(/[-:]/g, '').split('.')[0] + 'Z';
-            };
+    // Function to fetch event data from GitHub
+    const fetchEventData = async (eventId) => {
+      try {
+        const response = await fetch(`https://cal.wvwine.co/events/${eventId}.json`);
+        if (!response.ok) throw new Error('Event not found');
+        return await response.json();
+      } catch (error) {
+        console.error('Error fetching event data:', error);
+        return null;
+      }
+    };
 
-            const formatOutlookDate = (dateTime) => {
-                const date = new Date(dateTime);
-                return date.toISOString().replace(/:/g, '%3a'); // URL encode ':' as '%3a'
-            };
+    // Function to generate calendar URLs
+    const generateCalendarUrls = (event) => {
+      const { title, description, location, startTime, endTime } = event;
+      const formattedTitle = encodeURIComponent(title);
+      const formattedDescription = encodeURIComponent(description);
+      const formattedLocation = encodeURIComponent(location);
+      const formatGoogleDate = (dateTime) => {
+        const date = new Date(dateTime);
+        const isoString = date.toISOString();
+        return isoString.replace(/[-:]/g, '').split('.')[0] + 'Z';
+      };
+      const formatOutlookDate = (dateTime) => {
+        const date = new Date(dateTime);
+        return date.toISOString().replace(/:/g, '%3a');
+      };
+      const formatOffice365Date = (dateTime) => {
+        const date = new Date(dateTime);
+        return date.toISOString();
+      };
+      const startDateGoogle = formatGoogleDate(startTime);
+      const endDateGoogle = formatGoogleDate(endTime);
+      const startDateOutlook = formatOutlookDate(startTime);
+      const endDateOutlook = formatOutlookDate(endTime);
+      const startDateOffice365 = formatOffice365Date(startTime);
+      const endDateOffice365 = formatOffice365Date(endTime);
+      const startDateYahoo = formatGoogleDate(startTime);
+      const endDateYahoo = formatGoogleDate(endTime);
+      return {
+        yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startDateYahoo}&ET=${endDateYahoo}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
+        google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startDateGoogle}/${endDateGoogle}&ctz=America/Los_Angeles&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
+        outlook: `https://outlook.live.com/calendar/0/action/compose/?path=%2fcalendar%2faction%2fcompose&rru=addevent&startdt=${startDateOutlook}&enddt=${endDateOutlook}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
+        office365: `https://outlook.office.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${startDateOffice365}&enddt=${endDateOffice365}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`
+      };
+    };
 
-            const formatOffice365Date = (dateTime) => {
-                const date = new Date(dateTime);
-                return date.toISOString();
-            };
+    // Function to handle 404 error
+    const showNotFound = () => {
+      document.getElementById('event-details').style.display = 'none';
+      document.getElementById('not-found').style.display = 'block';
+      document.getElementById('rsvp-container').style.display = 'none';
+    };
 
-            const startDateGoogle = formatGoogleDate(startTime);
-            const endDateGoogle = formatGoogleDate(endTime);
+    // Function to update the DOM with event details
+    const updateEventDetails = (event) => {
+      document.title = event.title;
+      document.getElementById('event-title').textContent = event.title;
+      document.getElementById('event-description').innerHTML = event.description;
+      document.getElementById('event-location').textContent = "📍" + event.location;
+      const startDate = new Date(event.startTime);
+      const endDate = new Date(event.endTime);
+      document.getElementById('event-day').textContent = startDate.getDate();
+      document.getElementById('event-month').textContent = startDate.toLocaleString('default', { month: 'short' }).toUpperCase();
+      document.getElementById('event-day-name').textContent = startDate.toLocaleString('default', { weekday: 'long' });
+      document.getElementById('event-full-date').textContent = startDate.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
+      document.getElementById('event-time').textContent = `${startDate.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} - ${endDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+    };
 
-            const startDateOutlook = formatOutlookDate(startTime);
-            const endDateOutlook = formatOutlookDate(endTime);
+    // Function to redirect to Apple Calendar with webcal:// URL
+    const redirectToAppleCalendar = (event) => {
+      event.preventDefault();
+      const eventId = window.location.pathname.split('/').pop();
+      if (!eventId) return;
+      window.location.href = `https://cal.wvwine.co/events/${eventId}.ics`;
+    };
 
-            const startDateOffice365 = formatOffice365Date(startTime);
-            const endDateOffice365 = formatOffice365Date(endTime);
+    // Function to handle Apple Calendar ICS download
+    const downloadICS = (event) => {
+      event.preventDefault();
+      const eventId = window.location.pathname.split('/').pop();
+      if (!eventId) return;
+      fetchEventData(eventId).then(event => {
+        if (!event) return;
+        const icsContent = generateICSFile(event);
+        const blob = new Blob([icsContent], { type: 'text/calendar' });
+        const icsBlobUrl = URL.createObjectURL(blob);
+        const tempLink = document.createElement('a');
+        tempLink.href = icsBlobUrl;
+        tempLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
+        tempLink.click();
+        URL.revokeObjectURL(icsBlobUrl);
+      });
+    };
 
-            const startDateYahoo = formatGoogleDate(startTime);
-            const endDateYahoo = formatGoogleDate(endTime);
-
-            return {
-                yahoo: `https://calendar.yahoo.com/?v=60&view=d&type=20&ST=${startDateYahoo}&ET=${endDateYahoo}&TITLE=${formattedTitle}&DESC=${formattedDescription}&in_loc=${formattedLocation}`,
-                google: `https://calendar.google.com/calendar/u/0/r/eventedit?dates=${startDateGoogle}/${endDateGoogle}&ctz=America/Los_Angeles&text=${formattedTitle}&details=${formattedDescription}&location=${formattedLocation}`,
-                outlook: `https://outlook.live.com/calendar/0/action/compose/?path=%2fcalendar%2faction%2fcompose&rru=addevent&startdt=${startDateOutlook}&enddt=${endDateOutlook}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`,
-                office365: `https://outlook.office.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&startdt=${startDateOffice365}&enddt=${endDateOffice365}&subject=${formattedTitle}&body=${formattedDescription}&location=${formattedLocation}`
-            };
-        };
-
-        // Function to handle 404 error
-        const showNotFound = () => {
-            document.getElementById('event-details').style.display = 'none';
-            document.getElementById('not-found').style.display = 'block';
-        };
-        // Function to update the DOM with event details
-        const updateEventDetails = (event) => {
-            document.title = event.title; // Update the page title
-            document.getElementById('event-title').textContent = event.title;
-            document.getElementById('event-description').innerHTML = event.description;
-            document.getElementById('event-location').textContent = "📍" + event.location;
-            const startDate = new Date(event.startTime);
-            const endDate = new Date(event.endTime);
-            document.getElementById('event-day').textContent = startDate.getDate();
-            document.getElementById('event-month').textContent = startDate.toLocaleString('default', { month: 'short' }).toUpperCase();
-            document.getElementById('event-day-name').textContent = startDate.toLocaleString('default', { weekday: 'long' });
-            document.getElementById('event-full-date').textContent = startDate.toLocaleString('default', { month: 'short', day: 'numeric', year: 'numeric' });
-            document.getElementById('event-time').textContent = `${startDate.toLocaleTimeString([], {hour: 'numeric', minute:'2-digit'})} - ${endDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
-        };
-        // Function to redirect to Apple Calendar with webcal:// URL
-        const redirectToAppleCalendar = (event) => {
-            event.preventDefault(); // Prevent the default link action
-            const eventId = window.location.pathname.split('/').pop();
-            if (!eventId) return;
-            window.location.href = `https://cal.wvwine.co/events/${eventId}.ics`;
-        };
-
-        // Function to handle Apple Calendar ICS download
-        const downloadICS = (event) => {
-            event.preventDefault(); // Prevent the default link action
-            const eventId = window.location.pathname.split('/').pop();
-            if (!eventId) return;
-            fetchEventData(eventId).then(event => {
-                if (!event) return;
-                const icsContent = generateICSFile(event);
-                const blob = new Blob([icsContent], { type: 'text/calendar' });
-                const icsBlobUrl = URL.createObjectURL(blob);
-                // Create a temporary link to trigger download
-                const tempLink = document.createElement('a');
-                tempLink.href = icsBlobUrl;
-                tempLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
-                tempLink.click();
-                // Clean up
-                URL.revokeObjectURL(icsBlobUrl);
-            });
-        };
-        (async () => {
-            try {
-                // Get event ID from URL
-                const eventId = window.location.pathname.split('/').pop();
-                if (!eventId) throw new Error('No event ID provided in the URL');
-                // Fetch event data
-                const event = await fetchEventData(eventId);
-                if (!event) throw new Error('Event not found');
-                // Update the DOM with event details
-                updateEventDetails(event);
-                // Generate URLs and ICS file
-                const urls = generateCalendarUrls(event);
-                const icsContent = generateICSFile(event);
-                // Create and download ICS file
-                const blob = new Blob([icsContent], { type: 'text/calendar' });
-                const icsBlobUrl = URL.createObjectURL(blob);
-                const icsLink = document.getElementById('ics-link');
-                icsLink.href = icsBlobUrl;
-                icsLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
-                document.getElementById('yahoo-link').href = urls.yahoo;
-                document.getElementById('google-link').href = urls.google;
-                document.getElementById('outlook-link').href = urls.outlook;
-                document.getElementById('office365-link').href = urls.office365;
-                // Show event details and hide 404 message
-                document.getElementById('event-details').style.display = 'block';
-                document.getElementById('not-found').style.display = 'none';
-            } catch (error) {
-                console.error('Error fetching event data:', error);
-                showNotFound();
-            }
-        })();
-    </script>
+    (async () => {
+      try {
+        const eventId = window.location.pathname.split('/').pop();
+        if (!eventId) throw new Error('No event ID provided in the URL');
+        const event = await fetchEventData(eventId);
+        if (!event) throw new Error('Event not found');
+        updateEventDetails(event);
+        const urls = generateCalendarUrls(event);
+        const icsContent = generateICSFile(event);
+        const blob = new Blob([icsContent], { type: 'text/calendar' });
+        const icsBlobUrl = URL.createObjectURL(blob);
+        const icsLink = document.getElementById('ics-link');
+        icsLink.href = icsBlobUrl;
+        icsLink.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`;
+        document.getElementById('yahoo-link').href = urls.yahoo;
+        document.getElementById('google-link').href = urls.google;
+        document.getElementById('outlook-link').href = urls.outlook;
+        document.getElementById('office365-link').href = urls.office365;
+        document.getElementById('event-details').style.display = 'block';
+        document.getElementById('not-found').style.display = 'none';
+      } catch (error) {
+        console.error('Error fetching event data:', error);
+        showNotFound();
+      }
+    })();
+  </script>
+  
+  <!-- RSVP Form Script -->
+  <script>
+    document.querySelector('.register-button').addEventListener('click', async function(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+      const eventId = window.location.pathname.split('/').pop();
+      let isValid = true;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      nameInput.classList.remove('error');
+      emailInput.classList.remove('error');
+      if (!nameInput.value.trim()) {
+        nameInput.classList.add('error');
+        isValid = false;
+      }
+      if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+        emailInput.classList.add('error');
+        isValid = false;
+      }
+      if (!isValid) return;
+      const response = await fetch('https://admin.wvwine.co/api/rsvp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: nameInput.value, email: emailInput.value, attendance, eventId })
+      });
+      const result = await response.json();
+      alert(result.message || result.error);
+    });
+  </script>
+  <!-- End of RSVP Form Script -->
 </body>
 </html>
