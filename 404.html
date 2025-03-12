@@ -580,11 +580,11 @@ END:VCALENDAR`;
           const eventName = document.getElementById('event-title')?.textContent || 'the event';
           let message = '';
           if (attendance === 'yes') {
-            message = `You are attending ${eventName}`;
+            message = `You are attending ${eventName}!`;
           } else if (attendance === 'maybe') {
-            message = `You're interested in ${eventName}`;
+            message = `You're interested in ${eventName}.`;
           } else if (attendance === 'no') {
-            message = `You are not attending ${eventName}`;
+            message = `You are not attending ${eventName}.`;
           }
     
           // Fade out RSVP form and replace with success message
@@ -592,7 +592,7 @@ END:VCALENDAR`;
           rsvpFormContainer.classList.add('fade-out');
     
           setTimeout(() => {
-            rsvpFormContainer.innerHTML = `<h2>${message}</h2>`;
+            rsvpFormContainer.innerHTML = `<h3>${message}</h3>`;
             rsvpFormContainer.style.opacity = '1';
           }, 500);
         } else {
