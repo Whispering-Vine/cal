@@ -528,6 +528,11 @@ END:VCALENDAR`;
         document.getElementById('office365-link').href = urls.office365;
         document.getElementById('event-details').style.display = 'block';
         document.getElementById('not-found').style.display = 'none';
+        if (event.tock === true) {
+        document.getElementById('rsvp-container').style.display = 'none';
+      } else {
+        document.getElementById('rsvp-container').style.display = 'block';
+        }
       } catch (error) {
         console.error('Error fetching event data:', error);
         showNotFound();
