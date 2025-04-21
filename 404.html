@@ -510,8 +510,11 @@ END:VCALENDAR`;
 
     (async () => {
       try {
-        const eventId = window.location.pathname.split('/').pop();
+        let eventId = window.location.pathname.split('/').pop();
         if (!eventId) throw new Error('No event ID provided in the URL');
+        if (eventId === 'RJoA5p') {
+          eventId = 'JdlUAs';
+        }
         const event = await fetchEventData(eventId);
         if (!event) throw new Error('Event not found');
         updateEventDetails(event);
