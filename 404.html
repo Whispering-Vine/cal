@@ -6,6 +6,9 @@
   <title>Event</title>
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Google Tag Manager -->
   <script>
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -16,260 +19,397 @@
   </script>
   <!-- End Google Tag Manager -->
   <style>
-    /* Existing styles for event details */
+    :root {
+      --background: 0 0% 100%;
+      --foreground: 222.2 84% 4.9%;
+      --card: 0 0% 100%;
+      --card-foreground: 222.2 84% 4.9%;
+      --popover: 0 0% 100%;
+      --popover-foreground: 222.2 84% 4.9%;
+      --primary: 222.2 47.4% 11.2%;
+      --primary-foreground: 210 40% 98%;
+      --secondary: 210 40% 96%;
+      --secondary-foreground: 222.2 84% 4.9%;
+      --muted: 210 40% 96%;
+      --muted-foreground: 215.4 16.3% 46.9%;
+      --accent: 210 40% 96%;
+      --accent-foreground: 222.2 84% 4.9%;
+      --destructive: 0 84.2% 60.2%;
+      --destructive-foreground: 210 40% 98%;
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --ring: 222.2 84% 4.9%;
+      --radius: 0.5rem;
+    }
+
     * {
       box-sizing: border-box;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
       margin: 0;
       padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 100vh;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
     }
+
     .container {
-      margin-top: 55px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      max-width: 600px;
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: calc(var(--radius) + 2px);
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+      padding: 2rem;
+      max-width: 42rem;
       width: 100%;
       position: relative;
+      margin-top: 4rem;
     }
+
     .back-button {
       position: fixed;
-      top: 20px;
-      left: 20px;
-      background: #9c9c9c;
-      color: #fff;
+      top: 1.25rem;
+      left: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s ease-in-out;
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
       border: none;
-      border-radius: 5px;
-      padding: 10px 15px;
-      font-size: 16px;
-      cursor: pointer;
+      padding: 0.5rem 1rem;
       text-decoration: none;
-      transition: background 0.3s, transform 0.3s;
+      cursor: pointer;
+      z-index: 50;
     }
+
     .back-button:hover {
-      background: #000000;
-      color: #fff;
-      transform: scale(1.05);
+      background-color: hsl(var(--primary) / 0.9);
+      transform: translateY(-1px);
     }
+
     .back-button i {
-      margin-right: 8px;
+      margin-right: 0.5rem;
     }
+
     h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
+      font-size: 1.875rem;
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+      color: hsl(var(--foreground));
     }
+
     .event-date {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
     }
+
     .calendar-icon {
-      background-color: #000;
-      color: #fff;
-      width: 60px;
-      height: 60px;
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      width: 4rem;
+      height: 4rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-weight: bold;
-      margin-right: 15px;
-      border-radius: 5px;
+      font-weight: 600;
+      border-radius: var(--radius);
+      flex-shrink: 0;
     }
+
     .calendar-icon .day {
-      font-size: 24px;
+      font-size: 1.5rem;
+      line-height: 1;
     }
+
+    .calendar-icon .month {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
     .event-info {
-      font-size: 18px;
+      font-size: 1rem;
     }
+
+    .event-info > div:first-child {
+      font-weight: 600;
+      color: hsl(var(--foreground));
+    }
+
     .event-location, .event-details, .event-price {
-      margin-top: 20px;
-      font-style: italic;
-      font-size: 16px;
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
+
     .event-note {
-      margin-top: 20px;
+      margin-top: 1.5rem;
       white-space: pre-line;
       overflow-wrap: break-word;
+      color: hsl(var(--foreground));
+      line-height: 1.6;
     }
+
+    .timezone {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: hsl(var(--muted));
+      color: hsl(var(--muted-foreground));
+      padding: 0.25rem 0.75rem;
+      border-radius: calc(var(--radius) * 2);
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
     .add-to-calendar {
-      margin-top: 30px;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid hsl(var(--border));
     }
+
     .add-to-calendar h2 {
-      font-size: 20px;
-      margin-bottom: 15px;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: hsl(var(--foreground));
     }
+
     .calendar-buttons {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-    .calendar-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
-    }
-    .calendar-button i {
-      margin-right: 5px;
-      margin-bottom: 2px;
-    }
-    .calendar-button:hover {
-      background-color: #f0f0f0;
-      color: #f55555;
-      transform: scale(1.05);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    .timezone {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: #f0f0f0;
-      padding: 5px 10px;
-      border-radius: 15px;
-      font-size: 12px;
-    }
-    .not-found {
-      text-align: center;
-      margin-top: 50px;
-    }
-    
-    /* New RSVP form styles */
-    .rsvp-container {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      width: 100%;
-      text-align: left;
-      margin-top: 30px;
-      transition: opacity 0.5s ease;
-    }
-    .fade-out {
-        opacity: 0;
-    }
-    .rsvp-container h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
-      font-weight: bold;
-      color: black;
-    }
-    .rsvp-label {
-      font-weight: bold;
-      display: block;
-      margin: 10px 0 5px;
-    }
-    input, select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-        margin-bottom: 15px;
-        transition: border-color 0.3s;
+      grid-template-rows: repeat(2, auto);
+      gap: 0.75rem;
     }
 
-    input.error {
-        border-color: #F44336;
-        background-color: #ffebee;
+    .calendar-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s ease-in-out;
+      border: 1px solid hsl(var(--border));
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      cursor: pointer;
+      gap: 0.5rem;
     }
+
+    .calendar-button:hover {
+      background-color: hsl(var(--accent));
+      color: hsl(var(--accent-foreground));
+      border-color: hsl(var(--border));
+      transform: translateY(-1px);
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+
+    .not-found {
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .not-found h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .not-found p {
+      color: hsl(var(--muted-foreground));
+      font-size: 1rem;
+    }
+
+    /* RSVP Form Styles */
+    .rsvp-container {
+      background: hsl(var(--card));
+      border: 1px solid hsl(var(--border));
+      border-radius: calc(var(--radius) + 2px);
+      padding: 1.5rem;
+      width: 100%;
+      margin-top: 2rem;
+      transition: opacity 0.5s ease;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .rsvp-container h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: hsl(var(--foreground));
+    }
+
+    .limited-seats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .limited-seats > div {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      color: hsl(var(--muted-foreground));
+      font-weight: 500;
+    }
+
+    .rsvp-label {
+      font-weight: 500;
+      font-size: 0.875rem;
+      display: block;
+      margin: 1rem 0 0.5rem;
+      color: hsl(var(--foreground));
+    }
+
     .rsvp-container input,
     .rsvp-container select {
+      display: flex;
       width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      margin-bottom: 15px;
-      transition: border-color 0.3s;
+      border-radius: var(--radius);
+      border: 1px solid hsl(var(--input));
+      background-color: hsl(var(--background));
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+      transition: all 0.15s ease-in-out;
+      margin-bottom: 1rem;
     }
+
+    .rsvp-container input:focus,
+    .rsvp-container select:focus {
+      outline: none;
+      border-color: hsl(var(--ring));
+      box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+    }
+
     .rsvp-container input.error {
-      border-color: #F44336;
-      background-color: #ffebee;
+      border-color: hsl(var(--destructive));
+      background-color: hsl(var(--destructive) / 0.1);
     }
+
     .attendance-options {
       display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
     }
+
     .attendance-options label {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 10px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      font-weight: bold;
+      padding: 0.75rem 1rem;
+      border: 1px solid hsl(var(--border));
+      border-radius: var(--radius);
+      font-weight: 500;
+      font-size: 0.875rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.15s ease-in-out;
       text-align: center;
+      background-color: hsl(var(--background));
+      color: hsl(var(--foreground));
     }
+
     .attendance-options input {
       display: none;
     }
-    /* Change background when selected */
+
     .attendance-options input:checked + label {
-      color: white;
+      color: hsl(var(--primary-foreground));
+      border-color: transparent;
     }
+
     .attendance-options input#attend-yes:checked + label {
-      background-color: #4CAF50;
-      border-color: #4CAF50;
+      background-color: hsl(142.1 76.2% 36.3%);
     }
+
     .attendance-options input#attend-maybe:checked + label {
-      background-color: #FFC107;
-      border-color: #FFC107;
-      color: black;
+      background-color: hsl(47.9 95.8% 53.1%);
+      color: hsl(var(--foreground));
     }
+
     .attendance-options input#attend-no:checked + label {
-      background-color: #F44336;
-      border-color: #F44336;
+      background-color: hsl(var(--destructive));
     }
+
     .register-button {
-      width: 100%;
-      background: #000;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      padding: 12px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .register-button:hover {
-      background: #333;
-    }
-    .limited-seats {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      font-size: 14px;
-      color: #d95a2b;
-      font-weight: bold;
+      justify-content: center;
+      white-space: nowrap;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.15s ease-in-out;
+      background-color: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
+      border: none;
+      padding: 0.75rem 1.5rem;
+      width: 100%;
+      cursor: pointer;
     }
-    .limited-seats i {
-      margin-right: 5px;
+
+    .register-button:hover:not(:disabled) {
+      background-color: hsl(var(--primary) / 0.9);
     }
-    @media (max-width: 450px) {
+
+    .register-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 640px) {
+      .container {
+        margin: 1rem;
+        padding: 1.5rem;
+        margin-top: 5rem;
+      }
+
       .calendar-buttons {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .attendance-options {
+        flex-direction: column;
+      }
+
+      .limited-seats {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .calendar-buttons {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -279,19 +419,24 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T57JWWVK"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+  
   <div class="container">
-    <a href="https://cal.wvwine.co" class="back-button"><i class="fas fa-arrow-left"></i>Events</a>
+    <a href="https://cal.wvwine.co" class="back-button">
+      <i class="fas fa-arrow-left"></i>Events
+    </a>
     <div class="timezone">UTC -8 America/Los_Angeles</div>
+    
     <div class="not-found" id="not-found" style="display: none;">
       <h1>404 - Event Not Found</h1>
       <p>The event you are looking for does not exist or has been moved.</p>
     </div>
+    
     <div id="event-details">
       <h1 id="event-title"></h1>
       <div class="event-date">
         <div class="calendar-icon">
           <div class="day" id="event-day"></div>
-          <div id="event-month"></div>
+          <div class="month" id="event-month"></div>
         </div>
         <div class="event-info">
           <div id="event-day-name"></div>
@@ -302,25 +447,37 @@
       <div class="event-location" id="event-location">
         <i class="fas fa-map-marker-alt"></i>
       </div>
-      <div class="event-note" id="event-description">
-      </div>
+      <div class="event-note" id="event-description"></div>
+      
       <div class="add-to-calendar">
         <h2>Add to Calendar</h2>
         <div class="calendar-buttons">
-          <a href="#" class="calendar-button" id="google-link"><i class="fab fa-google"></i> Google</a>
-          <a href="#" class="calendar-button" id="apple-link" onclick="redirectToAppleCalendar(event)"><i class="fab fa-apple"></i> Apple</a>
-          <a href="#" class="calendar-button" id="outlook-link"><i class="fas fa-envelope"></i> Outlook</a>
-          <a href="#" class="calendar-button" id="yahoo-link"><i class="fab fa-yahoo"></i> Yahoo</a>
-          <a href="#" class="calendar-button" id="office365-link"><i class="fab fa-microsoft"></i> Office365</a>
-          <a href="#" class="calendar-button" id="ics-link"><i class="fas fa-calendar-alt"></i> ICS File</a>
+          <a href="#" class="calendar-button" id="google-link">
+            <i class="fab fa-google"></i> Google
+          </a>
+          <a href="#" class="calendar-button" id="apple-link" onclick="redirectToAppleCalendar(event)">
+            <i class="fab fa-apple"></i> Apple
+          </a>
+          <a href="#" class="calendar-button" id="outlook-link">
+            <i class="fas fa-envelope"></i> Outlook
+          </a>
+          <a href="#" class="calendar-button" id="yahoo-link">
+            <i class="fab fa-yahoo"></i> Yahoo
+          </a>
+          <a href="#" class="calendar-button" id="office365-link">
+            <i class="fab fa-microsoft"></i> Office365
+          </a>
+          <a href="#" class="calendar-button" id="ics-link">
+            <i class="fas fa-calendar-alt"></i> ICS File
+          </a>
         </div>
       </div>
     </div>
     
-    <!-- RSVP Form Integrated Below -->
+    <!-- RSVP Form -->
     <div class="rsvp-container" id="rsvp-container">
       <div class="limited-seats">
-        <h2>RSVP Here</h2>
+        <h2>Let us know you're coming!</h2>
         <div><i class="fas fa-users"></i> Limited seats</div>
       </div>
       <p><strong>Are you attending this event?</strong></p>
@@ -338,9 +495,8 @@
       <input type="email" id="email" placeholder="Enter your email">
       <button class="register-button" type="submit" id="register-btn">Register</button>
     </div>
-    <!-- End of RSVP Form -->
-    
   </div>
+
   <script>
     // Existing script for event details and calendar functionality
 
@@ -626,6 +782,5 @@ END:VCALENDAR`;
       }
     });
   </script>
-  <!-- End of RSVP Form Script -->
 </body>
 </html>
