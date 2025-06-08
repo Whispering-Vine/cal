@@ -421,8 +421,9 @@
   <!-- End Google Tag Manager (noscript) -->
   
   <div class="container">
-    <a href="https://cal.wvwine.co" class="back-button">
-      <i class="fas fa-arrow-left"></i>Events
+    <a href="#" class="back-button" id="back-button">
+      <i class="fas fa-arrow-left"></i>
+      <span id="back-text">Back</span>
     </a>
     <div class="timezone">UTC -8 America/Los_Angeles</div>
     
@@ -780,6 +781,35 @@ END:VCALENDAR`;
           registerBtn.disabled = false;
         }, 2000);
       }
+    });
+  </script>
+
+  <script>
+    // Handle back button functionality and text
+    document.addEventListener('DOMContentLoaded', function() {
+      const backButton = document.getElementById('back-button');
+      const backText = document.getElementById('back-text');
+      const referrer = document.referrer;
+      
+      // Check if user came from the main calendar site
+      if (referrer && (referrer.includes('cal.wvwine.co') || referrer === 'https://cal.wvwine.co/')) {
+        backText.textContent = 'Events';
+      } else {
+        backText.textContent = 'Back';
+      }
+      
+      // Handle back button click
+      backButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        // If there's a referrer and browser history, go back
+        if (referrer && window.history.length > 1) {
+          window.history.back();
+        } else {
+          // Fallback to the events page if no referrer or history
+          window.location.href = 'https://cal.wvwine.co';
+        }
+      });
     });
   </script>
 </body>
