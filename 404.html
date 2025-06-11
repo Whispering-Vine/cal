@@ -226,6 +226,26 @@
       box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     }
 
+    .description-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: background-color 0.15s ease-in-out;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin: 0.25rem 0;
+    }
+
+    .description-button:hover {
+      filter: brightness(0.95);
+      transform: translateY(-1px);
+    }
+
     .not-found {
       text-align: center;
       padding: 3rem 0;
@@ -628,11 +648,39 @@ END:VCALENDAR`;
       document.getElementById('rsvp-container').style.display = 'none';
     };
 
+    // Utility to calculate a contrasting text color
+    const getContrastColor = (bg) => {
+      const rgb = bg.match(/\d+/g)?.map(Number) || [0, 0, 0];
+      const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+      return brightness > 160 ? '#000' : '#fff';
+    };
+
+    // Replace links in the description with styled buttons
+    const replaceLinksWithButtons = () => {
+      const container = document.getElementById('event-description');
+      if (!container) return;
+      container.querySelectorAll('a').forEach(link => {
+        const color = getComputedStyle(link).color;
+        const btn = document.createElement('button');
+        btn.className = 'description-button';
+        btn.textContent = link.textContent;
+        btn.style.backgroundColor = color;
+        btn.style.color = getContrastColor(color);
+        if (link.href) {
+          btn.addEventListener('click', () => {
+            window.open(link.href, link.target || '_blank');
+          });
+        }
+        link.replaceWith(btn);
+      });
+    };
+
     // Function to update the DOM with event details
     const updateEventDetails = (event) => {
       document.title = event.title;
       document.getElementById('event-title').textContent = event.title;
       document.getElementById('event-description').innerHTML = event.description;
+      replaceLinksWithButtons();
       document.getElementById('event-location').textContent = "📍" + event.location;
       const startDate = new Date(event.startTime);
       const endDate = new Date(event.endTime);
