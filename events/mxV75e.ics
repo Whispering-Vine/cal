@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:qkRk7l
+DTSTAMP:20250828T235306Z
+DTSTART:20250903T230000Z
+DTEND:20250904T020000Z
+DESCRIPTION:Join us on Wednesday\, September 3\, from 4–7 PM at Whispering Vine South Creek for a special tasting with the acclaimed Groth Vineyards of Napa Valley. This event features just three standout wines\, highlighting Groth’s precision and craftsmanship in Cabernet Sauvignon\, Chardonnay\, and Sauvignon Blanc.\nTasting Fee: $25 (Buy a bottle from the tasting and your fee is refunded)\nFeatured Wines:\n• Groth Cabernet Sauvignon 2021 – Herbal and refined with cherry\, plum\, dried herbs\, and tobacco leaf over fine\, grippy tannins.\n• Groth Estate Chardonnay 2022 – Bright and layered with orange zest\, pear\, kiwi\, lemon curd\, and a touch of toasted hazelnut.\n• Groth Napa Valley Sauvignon Blanc 2023 – Fresh and vibrant with mango\, papaya\, citrus peel\, white tea\, and a long\, mineral-driven finish.\nExperience the elegance of Groth’s Napa Valley portfolio—buy a bottle and your tasting is free.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Groth Vineyards Tasting
+END:VEVENT
+END:VCALENDAR
