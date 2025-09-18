@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:B26big
+DTSTAMP:20250918T233002Z
+DTSTART:20250924T230000Z
+DTEND:20250925T020000Z
+DESCRIPTION:Join us on Wednesday\, September 24\, from 4–7 PM at Whispering Vine South Creek for a tasting featuring the acclaimed wines of DeLille Vineyards\, a Washington winery celebrated for its Bordeaux-inspired blends and elegant whites.\nTasting Fee: $30 (Buy a bottle from the tasting and your fee is refunded)\nFeatured Wines:\n• DeLille D2 Estate Red 2022 – 93 pts Robert Parker\, 92 pts Vinous\, 91 pts Jeb Dunnuck – Merlot-driven Bordeaux blend with layers of blackberry\, lavender\, herbs\, and mineral-laced elegance.\n• DeLille Chaleur Blanc 2023 – 94 pts Jeb Dunnuck\, 93 pts Vinous\, 91 pts Wine Spectator – Barrel-aged Sauvignon Blanc/Semillon blend with notes of citrus\, stone fruit\, honey\, and flinty minerality.\n• DeLille Métier Cabernet Sauvignon 2021 – 91 pts Jeb Dunnuck\, 91 pts Wine Spectator\, 91 pts James Suckling – Structured yet approachable Cabernet with cassis\, herbs\, and a refined\, balanced finish.\n• DeLille Métier Sauvignon Blanc 2023 – 91 pts Robert Parker\, 91 pts Jeb Dunnuck – Fresh and vibrant with white peach\, citrus blossom\, tropical fruit\, and crisp acidity.\nExperience the finesse and balance of Washington winemaking at its best—buy a bottle and your tasting is free.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:DeLille Vineyards Tasting
+END:VEVENT
+END:VCALENDAR
