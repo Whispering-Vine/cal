@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:DdFclo
+DTSTAMP:20250925T231618Z
+DTSTART:20251001T230000Z
+DTEND:20251002T020000Z
+DESCRIPTION:Join us on Wednesday\, October 1\, from 4–7 PM at Whispering Vine South Creek for a tasting featuring the elegant and expressive wines of Ferrari-Carano\, one of Sonoma County’s most iconic wineries.\nTasting Fee: $25 (Buy a bottle from the tasting and your fee is refunded)\nFeatured Wines:\n• Ferrari-Carano Reserve Cabernet Sauvignon 2021 – 94 pts James Suckling\, 91 pts Wine Enthusiast – Aromatic and full-bodied with black currant\, dark chocolate\, cedar\, and refined structure.\n• Ferrari-Carano Trésor 2021 – Bordeaux-style blend with bold notes of plum\, black currant\, cedar\, and a lingering\, textured finish.\n• Ferrari-Carano Reserve Chardonnay 2022 – Rich and creamy with apple crisp\, pear\, peach cobbler\, and graham cracker flavors over a long\, indulgent finish.\nExperience Ferrari-Carano’s dedication to quality and craftsmanship—buy a bottle and your tasting is free.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Ferrari-Carano Tasting
+END:VEVENT
+END:VCALENDAR
