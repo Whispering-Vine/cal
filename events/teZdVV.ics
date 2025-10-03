@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:v0EVH2
+DTSTAMP:20251003T000030Z
+DTSTART:20251008T230000Z
+DTEND:20251009T020000Z
+DESCRIPTION:Join us on Wednesday\, October 8\, from 4–7 PM at Whispering Vine South Creek for an elegant sparkling wine experience featuring the renowned Schramsberg Vineyards\, pioneers of méthode traditionnelle sparkling wines in Napa Valley.\nTasting Fee: $30 (Buy a bottle from the tasting and your fee is refunded)\nFeatured Wines:\n• Schramsberg Brut Rosé 2021 – Bright and lively with raspberry\, strawberry\, and white peach balanced by citrus zest and brioche notes\, finishing crisp and refreshing.\n• Schramsberg Blanc de Noirs 2021 – 93 pts Wine Spectator – Festive and expressive with apple\, cherry\, nectarine\, and citrus zest over a sleek\, refreshing finish.\n• Schramsberg Blanc de Blancs 2022 – Crisp and elegant with green apple\, citrus\, white peach\, and ginger\, supported by racy acidity and fine mousse.\nCelebrate one of California’s most iconic sparkling wine producers with this refined tasting
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Schramsberg Tasting
+END:VEVENT
+END:VCALENDAR
