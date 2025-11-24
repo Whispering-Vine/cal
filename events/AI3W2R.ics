@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:txpRj7
+DTSTAMP:20251124T102855Z
+DTSTART:20251206T210000Z
+DTEND:20251206T230000Z
+DESCRIPTION:Join us at Whispering Vine Wine Co. for our annual Bubbles Party. Enjoy a tasting of 30 sparkling wines paired with passed flatbreads in a relaxed and festive atmosphere. It’s a great opportunity to explore a variety of sparkling wines and enjoy an afternoon with friends during the holiday season.\nPrice: $55/person\nThis is a ticketed event. \nGet tickets
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:🍾 Bubbles Party
+END:VEVENT
+END:VCALENDAR
