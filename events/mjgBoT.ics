@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:ggvmi8
+DTSTAMP:20260217T215413Z
+DTSTART:20260219T000000Z
+DTEND:20260219T030000Z
+DESCRIPTION:Join us on Wednesday\, February 18\, from 4–7 PM at Whispering Vine South Creek for a deep dive into the bold\, rule-breaking wines of The Prisoner Wine Company\, celebrated for rich blends\, plush textures\, and unforgettable flavor.\nTasting Fee: $30 (Buy a bottle from the tasting and your fee is refunded)\nFeatured Wines:\n• The Prisoner Red Blend 2022 – Lush and smooth with ripe raspberry\, blackberry\, pomegranate\, coconut\, and warm vanilla.\n• The Prisoner Cabernet Sauvignon 2022 – Powerful yet polished with dried currant\, baking spice\, espresso\, cocoa\, and structured tannins.\n• Unshackled Cabernet Sauvignon – Fruit-driven and vibrant with plum\, blackberry\, clove\, dried herbs\, and balanced acidity.\n• Unshackled Red Blend – Juicy and expressive with raspberry\, blueberry\, crushed violets\, spiced cherry\, and a lift of white pepper.\nDiscover your new favorite from one of California’s most iconic modern wine portfolios.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Prisoner Tasting
+END:VEVENT
+END:VCALENDAR
