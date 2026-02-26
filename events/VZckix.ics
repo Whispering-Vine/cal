@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:llEs1d
+DTSTAMP:20260226T201326Z
+DTSTART:20260304T210000Z
+DTEND:20260305T000000Z
+DESCRIPTION:Join us on Wednesday\, March 4th from 4–7 PM at Whispering Vine South Creek for a special evening featuring the bold\, expressive wines of Titus Vineyards. Known for crafting powerful yet polished Napa Valley reds\, Titus delivers depth\, character\, and classic structure in every bottle.\nTasting Fee: $30 (Buy a bottle from the tasting and your fee is refunded)\nFeatured Wines:\n• Titus Zinfandel 2023 – Bold and fruit-driven with ripe blackberry\, boysenberry\, and warm spice\, finishing vibrant and smooth.\n• Titus Cabernet Sauvignon Napa Valley 2022 – Layers of black cherry\, cassis\, and cedar lead into ripe dark fruit and fine-grained tannins with a long\, polished finish.\n• Titus Andronicus Napa Valley Red 2021 – A rich\, velvety blend with dark berry\, plum\, tobacco leaf\, cocoa\, and a lingering\, structured finish.\nExplore the richness and versatility of Napa Valley through these three standout selections—buy a bottle and your tasting is free.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Titus Vineyards Tasting
+END:VEVENT
+END:VCALENDAR
