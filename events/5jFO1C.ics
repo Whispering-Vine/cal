@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:z26Sl1
+DTSTAMP:20260305T232826Z
+DTSTART:20260311T230000Z
+DTEND:20260312T020000Z
+DESCRIPTION:Join us on Wednesday\, March 11th from 4–7 PM at Whispering Vine South Creek for a tasting featuring the historic wines of Martin Ray Vineyards & Winery\, a name deeply rooted in the story of California winemaking. Martin Ray was a pioneer of single-varietal\, region-driven wines\, bringing a Burgundian philosophy to the Santa Cruz Mountains beginning in the 1940s. Today\, the winery continues that legacy from its home in the Russian River Valley\, crafting expressive wines that reflect both heritage and terroir.\nTasting Fee: $25 (Buy a bottle from the tasting and your fee is refunded)\nFeatured Wines:\n• Martin Ray Synthesis Cabernet Sauvignon 2022 – 95 pts James Suckling – Plush and vibrant with blackberry\, blueberry\, violets and graphite\, supported by polished tannins and fresh acidity.\n• Martin Ray Synthesis Pinot Noir 2023 – 94 pts James Suckling\, 90 pts Wine Enthusiast – Bright and refined with strawberry\, cherry\, sandalwood and spice on a lively\, elegant finish.\n• Martin Ray Sonoma Cabernet Sauvignon 2022 – Fruit-forward and balanced with lively dark berry flavors\, smooth tannins and classic Sonoma character.\nDiscover the legacy of one of California’s early wine pioneers—buy a bottle and your tasting is free.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Martin Ray Tasting
+END:VEVENT
+END:VCALENDAR
