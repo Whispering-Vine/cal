@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:8RcsWx
+DTSTAMP:20260423T210356Z
+DTSTART:20260429T230000Z
+DTEND:20260430T020000Z
+DESCRIPTION:📅 April 29th\n🕕 4 - 7 PM\n🍷 Caymus\n📍Whispering Vine South Creek\n💵 $35 per person\nBuy a bottle from the tasting\, get the tasting fee refunded.\nFeatured Wines:\n- Caymus California Cabernet Sauvignon 2023 - $44.99\, Winery $55\n- Red Schooner by Caymus Voyage 12 - $29.99\n- Red Schooner by Caymus Transit No. 2 - $39.99\, Winery $50\n- Bonanza by Chuck Wagner The Vinekeeper Cabernet Sauvignon - $29.99
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Caymus Tasting at South Creek
+END:VEVENT
+END:VCALENDAR
