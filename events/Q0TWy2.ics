@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:Q0TWy2
+DTSTAMP:20260507T224405Z
+DTSTART:20260513T230000Z
+DTEND:20260514T020000Z
+DESCRIPTION:Join us on Wednesday\, May 13\, from 4 - 7 PM at Whispering Vine - South Creek for a tasting featuring Rombauer.\nTasting Fee: $45 per person (Buy a tasting bottle and your fee is refunded.)\nFeatured Wines:\n- Rombauer Cabernet Sauvignon 2022 – $59.99\, Winery $65 – Red raspberry\, currant and herbs lead into cassis\, baking spice and bright acidity.\n- Rombauer California Zinfandel 2023 – $36.99 – Cherry jam\, blackberry and nutmeg with soft tannins and a lingering finish.\n- Rombauer Chardonnay 2024 – $37.99\, Winery $42 – Yellow peach\, melon and citrus with creamy vanilla\, buttery nuance and bright acidity.\n- Rombauer Sauvignon Blanc 2023 – $25.99 – Passion fruit\, green melon and lime with grapefruit lift and mouthwatering acidity.\nCome explore Rombauer and find your favorite bottle. Buy a bottle from the tasting and your fee is refunded.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Rombauer Tasting
+END:VEVENT
+END:VCALENDAR
