@@ -3,11 +3,11 @@ VERSION:2.0
 PRODID:Whispering Vine
 BEGIN:VEVENT
 UID:7GRC2n
-DTSTAMP:20260512T205040Z
+DTSTAMP:20260512T223115Z
 DTSTART:20260519T230000Z
 DTEND:20260520T020000Z
-DESCRIPTION:Join us Tuesday\, May 19 from 4 - 7 PM at Whispering Vine Fourth Street for a focused sparkling tasting with Schramsberg Vineyards and special guest Laurant Sarazin\, Vice President of Sales. Tasting Fee: $25 (Buy a bottle from the tasting and your fee is refunded). Featured wines: Schramsberg Blanc de Blancs 2022\, Schramsberg Blanc de Noirs 2022\, and Schramsberg Brut Rose 2021. Taste three of Schramsberg's signature sparkling wines and spend the evening with one of the winery's key representatives.
+DESCRIPTION:Join us on Tuesday\, May 19\, from 4 - 7 PM at Whispering Vine - Fourth St. for a tasting featuring Schramsberg and special guest Laurant Sarazin\, Vice President of Sales.\nTasting Fee: $25 per person (Buy a tasting bottle and your fee is refunded.)\nFeatured Wines:\n- Schramsberg Blanc de Blancs 2022 – $35.99\, Winery $44 – Dynamic and fragrant\, offering lemon blossom\, orange peel and blanched almond flavors. Finishes on a vibrant\, fresh accent.\n- Schramsberg Blanc de Noirs 2022 – $39.99\, Winery $46 – Lively and refined but festive\, with pretty accents of strawberry\, lemon\, apple and graham cracker that sail on the crisp yet supple finish.\n- Schramsberg Brut Rose 2021 – $42.99\, Winery $50 – A lovely blush that's refined and festive\, with vibrant strawberry\, orange blossom and cherry flavors that glide on the refreshing finish.\nCome explore Schramsberg and find your favorite bottle. Buy a bottle from the tasting and your fee is refunded.
 LOCATION:4201 W Fourth St Reno\, NV 89523
-SUMMARY:Schramsberg Sparkling Tasting - Fourth Street
+SUMMARY:Schramsberg Tasting
 END:VEVENT
 END:VCALENDAR
