@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:EvaWwk
+DTSTAMP:20260512T205045Z
+DTSTART:20260520T230000Z
+DTEND:20260521T020000Z
+DESCRIPTION:Join us Wednesday\, May 20 from 4 - 7 PM at Whispering Vine South Creek for a focused sparkling tasting with Schramsberg Vineyards and special guest Laurant Sarazin\, Vice President of Sales. Tasting Fee: $25 (Buy a bottle from the tasting and your fee is refunded). Featured wines: Schramsberg Blanc de Blancs 2022\, Schramsberg Blanc de Noirs 2022\, and Schramsberg Brut Rose 2021. Taste three of Schramsberg's signature sparkling wines and spend the evening with one of the winery's key representatives.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Schramsberg Sparkling Tasting - South Creek
+END:VEVENT
+END:VCALENDAR
