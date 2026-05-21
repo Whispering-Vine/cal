@@ -3,10 +3,10 @@ VERSION:2.0
 PRODID:Whispering Vine
 BEGIN:VEVENT
 UID:ENfbYG
-DTSTAMP:20260521T212316Z
+DTSTAMP:20260521T223733Z
 DTSTART:20260527T230000Z
 DTEND:20260528T020000Z
-DESCRIPTION:Join us on Wednesday\, May 27\, from 4-7 PM at Whispering Vine South Creek for a West Coast Cabernet tasting featuring four rich\, structured reds from Napa Valley\, Alexander Valley\, Walla Walla Valley and Paso Robles.\nTasting Fee: $40 per person\nFeatured Wines:\n- Mount Veeder Winery Cabernet Sauvignon 2023 - $49.99 | Winery $70\n- Jordan Cabernet Sauvignon 2022 - $49.99 | Winery $60\n- Bledsoe Family Winery Cabernet Sauvignon 2022 - $49.99 - Wine Spectator 94\n- My Favorite Neighbor Cabernet Sauvignon 2022 - $29.99 | Winery $50
+DESCRIPTION:Join us on Wednesday\, May 27\, from 4-7 PM at Whispering Vine South Creek for a West Coast Cabernet tasting featuring four rich\, structured reds from Napa\, Sonoma\, Washington and Paso.\nTasting Fee: $40 per person\nFeatured Wines:\n- Napa: Mount Veeder Winery Cabernet Sauvignon 2023 - $49.99 | Winery $70\n- Sonoma: Jordan Cabernet Sauvignon 2022 - $49.99 | Winery $60\n- Washington: Bledsoe Family Winery Cabernet Sauvignon 2022 - $49.99 - Wine Spectator 94\n- Paso: My Favorite Neighbor Cabernet Sauvignon 2022 - $29.99 | Winery $50
 LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
 SUMMARY:West Coast Cabs Tasting
 END:VEVENT
