@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:acNjIW
+DTSTAMP:20260606T001715Z
+DTSTART:20260610T230000Z
+DTEND:20260611T020000Z
+DESCRIPTION:Join us on Wednesday\, June 10\, from 4-7 PM at Whispering Vine South Creek for a Jeff Runquist tasting featuring four California reds across Zinfandel\, Petite Sirah\, Barbera and Cabernet Franc.\nTasting Fee: $25 per person\nFeatured Wines:\n- Jeff Runquist "R" Zinfandel 2023 - $26.99\n- Jeff Runquist "R" Petite Sirah 2024 - $30.99\n- Jeff Runquist "R" Barbera 2024 - $26.99\n- Jeff Runquist "R" Cabernet Franc 2024 - $28.99
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Jeff Runquist Tasting
+END:VEVENT
+END:VCALENDAR
