@@ -8,10 +8,10 @@
     (function () {
       const pathSegments = window.location.pathname.split('/').filter(Boolean);
       const eventsPathIndex = pathSegments.indexOf('events');
-      const eventId = eventsPathIndex === -1 ? null : pathSegments[eventsPathIndex + 1];
+      const eventId = eventsPathIndex === -1 ? pathSegments[0] : pathSegments[eventsPathIndex + 1];
       const destination = eventId
-        ? `https://whisperingvinewine.com/events/${encodeURIComponent(eventId)}`
-        : 'https://whisperingvinewine.com/events';
+        ? `https://www.whisperingvinewine.com/events/${encodeURIComponent(eventId)}`
+        : 'https://www.whisperingvinewine.com/events';
       window.location.replace(destination);
     })();
   </script>
