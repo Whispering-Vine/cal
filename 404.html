@@ -3,7 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event</title>
+  <title>Redirecting...</title>
+  <script>
+    (function () {
+      const eventId = window.location.pathname.split('/').filter(Boolean).pop();
+      const destination = eventId
+        ? `https://whisperingvinewine.com/events/${encodeURIComponent(eventId)}`
+        : 'https://whisperingvinewine.com/events';
+      window.location.replace(destination);
+    })();
+  </script>
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
