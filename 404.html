@@ -6,7 +6,9 @@
   <title>Redirecting...</title>
   <script>
     (function () {
-      const eventId = window.location.pathname.split('/').filter(Boolean).pop();
+      const pathSegments = window.location.pathname.split('/').filter(Boolean);
+      const eventsPathIndex = pathSegments.indexOf('events');
+      const eventId = eventsPathIndex === -1 ? null : pathSegments[eventsPathIndex + 1];
       const destination = eventId
         ? `https://whisperingvinewine.com/events/${encodeURIComponent(eventId)}`
         : 'https://whisperingvinewine.com/events';
