@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:mVB6hO
+DTSTAMP:20260709T171541Z
+DTSTART:20260715T230000Z
+DTEND:20260716T020000Z
+DESCRIPTION:Join us on Wednesday\, July 15\, from 4-7 PM at Whispering Vine South Creek for an Aperture tasting featuring Sonoma County Cabernet Sauvignon\, Alexander Valley Red Blend and Chenin Blanc.\nTasting Fee: $35 per person (Buy a tasting bottle and your fee is refunded.)\nFeatured Wines:\n- Aperture Sonoma County Cabernet Sauvignon 2023 - Black fruit\, cocoa\, mint and velvety tannins from mineral-rich Sonoma hillsides.\n- Aperture Alexander Valley Red Blend 2022 - Floral\, layered red blend with black and red berries\, wet roses and a spiced cocoa finish.\n- Aperture Chenin Blanc 2023 - Bright old-vine Chenin with yuzu\, mango\, lemongrass and sea-salt minerality.\nCome taste through Aperture and find your favorite bottle. Buy a tasting bottle and your fee is refunded.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Aperture Tasting
+END:VEVENT
+END:VCALENDAR
