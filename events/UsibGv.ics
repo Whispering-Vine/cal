@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:UsibGv
+DTSTAMP:20260730T165245Z
+DTSTART:20260805T230000Z
+DTEND:20260806T020000Z
+DESCRIPTION:Explore four distinctive French wines selected by Kermit Lynch\, from lively Brouilly and southern Rhône red to structured Bandol and refreshing Corbières rosé.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Kermit Lynch Tasting
+END:VEVENT
+END:VCALENDAR
