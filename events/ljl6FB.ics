@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:ljl6FB
+DTSTAMP:20260813T161344Z
+DTSTART:20260819T230000Z
+DTEND:20260820T020000Z
+DESCRIPTION:Explore four generous\, barbecue-ready reds spanning Sonoma and Paso Robles\, with ripe fruit\, savory spice and enough structure for anything coming off the grill.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:BBQ Zins Tasting
+END:VEVENT
+END:VCALENDAR
