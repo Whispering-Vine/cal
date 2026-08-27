@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:PNgtgS
+DTSTAMP:20260827T171530Z
+DTSTART:20260902T230000Z
+DTEND:20260903T020000Z
+DESCRIPTION:Explore four distinctive rosés spanning California\, Germany's Ahr Valley and Oregon's Willamette Valley\, from bright and mineral-driven to lush and expressive.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Rosé Tasting
+END:VEVENT
+END:VCALENDAR
