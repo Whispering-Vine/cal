@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:fszBiF
+DTSTAMP:20260902T161338Z
+DTSTART:20260909T230000Z
+DTEND:20260910T020000Z
+DESCRIPTION:Explore four Paso Robles Cabernets side by side\, from polished and plush to bold\, savory and structured.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Paso Cabernet Tasting
+END:VEVENT
+END:VCALENDAR
