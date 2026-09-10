@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:s7xmYt
+DTSTAMP:20260910T175348Z
+DTSTART:20260916T230000Z
+DTEND:20260917T020000Z
+DESCRIPTION:Explore four distinctive wines from the Far Niente family\, spanning polished Napa Chardonnay\, Russian River Pinot Noir and expressive Napa Cabernet Sauvignon.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Far Niente Family Tasting
+END:VEVENT
+END:VCALENDAR
