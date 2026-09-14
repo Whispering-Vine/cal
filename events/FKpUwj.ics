@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:FKpUwj
+DTSTAMP:20260914T193551Z
+DTSTART:20260922T230000Z
+DTEND:20260923T030000Z
+DESCRIPTION:Explore four expressive California reds from Jeff Runquist Wines in a focused Flights & Flatbread tasting.
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Runquist Flights & Flatbread
+END:VEVENT
+END:VCALENDAR
