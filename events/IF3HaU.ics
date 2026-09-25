@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:IF3HaU
+DTSTAMP:20260925T194432Z
+DTSTART:20260929T230000Z
+DTEND:20260930T030000Z
+DESCRIPTION:Explore four distinctive Rombauer wines in a relaxed Flights & Flatbread tasting\, from vibrant Chardonnay to generous California reds.
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Rombauer Flights & Flatbread
+END:VEVENT
+END:VCALENDAR
