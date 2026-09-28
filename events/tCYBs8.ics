@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:tCYBs8
+DTSTAMP:20260928T185236Z
+DTSTART:20261006T230000Z
+DTEND:20261007T030000Z
+DESCRIPTION:Explore four benchmark wines from the Duckhorn portfolio\, spanning Napa Valley classics and Goldeneye's expressive Anderson Valley Pinot Noir.
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Duckhorn Flights & Flatbread
+END:VEVENT
+END:VCALENDAR
