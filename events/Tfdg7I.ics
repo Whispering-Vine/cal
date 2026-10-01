@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:Tfdg7I
+DTSTAMP:20261001T161413Z
+DTSTART:20261007T230000Z
+DTEND:20261008T020000Z
+DESCRIPTION:Explore four expressive red blends spanning Napa Valley\, Sonoma County and California\, each with its own balance of fruit\, structure and spice.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Red Blend Tasting
+END:VEVENT
+END:VCALENDAR
