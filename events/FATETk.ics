@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:FATETk
+DTSTAMP:20261013T214314Z
+DTSTART:20261031T200000Z
+DTEND:20261031T220000Z
+DESCRIPTION:Discover wines for holiday gatherings and gifting at an afternoon preview of some of our best sellers\, with reduced pricing on more than 30 wines.
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Holiday Wine Preview
+END:VEVENT
+END:VCALENDAR
