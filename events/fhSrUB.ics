@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:fhSrUB
+DTSTAMP:20261022T160818Z
+DTSTART:20261028T230000Z
+DTEND:20261029T020000Z
+DESCRIPTION:Explore four expressions of Sonoma Cabernet Sauvignon\, from refined Alexander Valley classics to generous\, dark-fruited favorites.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Sonoma Cabernet Tasting
+END:VEVENT
+END:VCALENDAR
