@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:nnG9Ya
+DTSTAMP:20261024T000937Z
+DTSTART:20261104T000000Z
+DTEND:20261104T040000Z
+DESCRIPTION:Explore Barnett Vineyards through mountain-grown Cabernet and Merlot alongside single-vineyard Pinot Noir and Chardonnay.
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Barnett Flights & Flatbread
+END:VEVENT
+END:VCALENDAR
