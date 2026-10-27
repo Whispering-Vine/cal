@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:1OWz5q
+DTSTAMP:20261027T001806Z
+DTSTART:20261028T230000Z
+DTEND:20261029T020000Z
+DESCRIPTION:Explore the wine regions of Piedmont and Tuscany\, discovering how local traditions and estate histories shape the character of the wines.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Italian Wine Journey with Fabio Longano
+END:VEVENT
+END:VCALENDAR
