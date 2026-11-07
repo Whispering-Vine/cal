@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:tLAERv
+DTSTAMP:20261107T221656Z
+DTSTART:20261205T200000Z
+DTEND:20261205T220000Z
+DESCRIPTION:Celebrate the holiday season with an afternoon exploring sparkling wines in a relaxed\, festive atmosphere with friends.
+LOCATION:4201 W Fourth St Reno\, NV 89523
+SUMMARY:Bubbles Party
+END:VEVENT
+END:VCALENDAR
