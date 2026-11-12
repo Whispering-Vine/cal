@@ -1,0 +1,13 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Whispering Vine
+BEGIN:VEVENT
+UID:zjcqqm
+DTSTAMP:20261112T175600Z
+DTSTART:20261119T000000Z
+DTEND:20261119T030000Z
+DESCRIPTION:Explore four expressive California Pinot Noirs and discover a favorite for the Thanksgiving table\, from bright coastal fruit to silky Russian River richness.
+LOCATION:85 Foothill Rd Ste 1 Reno\, NV 89511
+SUMMARY:Thanksgiving Pinots
+END:VEVENT
+END:VCALENDAR
